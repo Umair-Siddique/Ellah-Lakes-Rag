@@ -37,9 +37,14 @@ st.set_page_config(
 # Custom CSS for ChatGPT-like UI
 st.markdown("""
     <style>
-    .main {
+    /* Set main container to fixed height */
+    .main .block-container {
         padding-top: 1rem;
+        padding-bottom: 0;
+        max-width: 100%;
     }
+    
+    /* Message styling */
     .user-message {
         padding: 1rem 1.5rem;
         border-radius: 1rem;
@@ -48,6 +53,7 @@ st.markdown("""
         max-width: 80%;
         margin-left: auto;
     }
+    
     .assistant-message {
         padding: 1rem 1.5rem;
         border-radius: 1rem;
@@ -56,18 +62,73 @@ st.markdown("""
         margin: 1rem 0;
         max-width: 80%;
     }
+    
+    /* Chat messages container - scrollable with fixed height */
     .chat-container {
         max-width: 900px;
         margin: 0 auto;
+        height: calc(100vh - 320px);
+        min-height: 400px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 1rem;
+        margin-bottom: 1rem;
     }
+    
+    /* Custom scrollbar for chat container */
+    .chat-container::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    .chat-container::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px;
+    }
+    
+    .chat-container::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 4px;
+    }
+    
+    .chat-container::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+    
+    /* Input area styling */
     .stTextInput {
+        max-width: 900px;
+        margin: 0 auto;
         position: sticky;
         bottom: 0;
         background-color: white;
         padding: 1rem 0;
         z-index: 100;
     }
+    
+    /* Ensure text input takes full width */
+    .stTextInput > div {
+        width: 100%;
+    }
     </style>
+    <script>
+    // Auto-scroll chat container to bottom
+    function scrollToBottom() {
+        const chatContainer = document.querySelector('.chat-container');
+        if (chatContainer) {
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+    }
+    
+    // Run on page load
+    window.addEventListener('load', scrollToBottom);
+    
+    // Run after any changes (for Streamlit updates)
+    const observer = new MutationObserver(scrollToBottom);
+    const chatContainer = document.querySelector('.chat-container');
+    if (chatContainer) {
+        observer.observe(chatContainer, { childList: true, subtree: true });
+    }
+    </script>
 """, unsafe_allow_html=True)
 
 # Initialize session state
@@ -76,10 +137,10 @@ if 'history' not in st.session_state:
 if 'last_query' not in st.session_state:
     st.session_state.last_query = ''
 
-# Header
+# Header (fixed at top)
 st.title("📊 Financial RAG System")
 st.markdown("### Intelligent Document Retrieval & Analysis")
-st.markdown("Ask questions about financial statements, corporate disclosures, or director dealings.")
+st.markdown("---")
 
 # Default settings (no longer exposed in UI)
 top_k = 10
@@ -166,7 +227,9 @@ else:
     </div>
     """, unsafe_allow_html=True)
 
-# Input area at the bottom
+st.markdown('</div>', unsafe_allow_html=True)
+
+# Input area at the bottom - fixed
 st.markdown("---")
 query = st.text_input(
     "Message Financial RAG",
@@ -269,8 +332,6 @@ if query and query != st.session_state.get('last_query', ''):
         except Exception as e:
             st.error(f"❌ Error: {str(e)}")
             st.exception(e)
-
-st.markdown('</div>', unsafe_allow_html=True)
 
 # Footer
 st.markdown(
