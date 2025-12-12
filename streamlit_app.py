@@ -38,21 +38,39 @@ st.set_page_config(
 st.markdown("""
     <style>
     /* Prevent entire page from scrolling */
-    html, body, .main, [data-testid="stAppViewContainer"] {
+    html, body {
         overflow: hidden !important;
         height: 100vh !important;
-        max-height: 100vh !important;
+        margin: 0;
+        padding: 0;
+    }
+    
+    [data-testid="stAppViewContainer"] {
+        overflow: hidden !important;
+        height: 100vh !important;
+    }
+    
+    .main {
+        overflow: hidden !important;
+        height: 100vh !important;
     }
     
     /* Fix main container */
     .main .block-container {
-        padding-top: 1rem;
-        padding-bottom: 0;
-        max-width: 100%;
+        padding: 0.5rem 1rem 0 1rem !important;
+        max-width: 100% !important;
         overflow: hidden !important;
         height: 100vh !important;
-        display: flex;
-        flex-direction: column;
+    }
+    
+    /* Header - compact */
+    .main .block-container > div:first-child {
+        flex-shrink: 0;
+    }
+    
+    /* Hide default streamlit padding */
+    .main .block-container > div {
+        gap: 0.5rem;
     }
     
     /* Message styling */
@@ -60,7 +78,7 @@ st.markdown("""
         padding: 1rem 1.5rem;
         border-radius: 1rem;
         background-color: #f7f7f8;
-        margin: 1rem 0;
+        margin: 0.75rem 0;
         max-width: 80%;
         margin-left: auto;
     }
@@ -70,7 +88,7 @@ st.markdown("""
         border-radius: 1rem;
         background-color: #ffffff;
         border: 1px solid #e0e0e0;
-        margin: 1rem 0;
+        margin: 0.75rem 0;
         max-width: 80%;
     }
     
@@ -78,28 +96,27 @@ st.markdown("""
     .chat-container {
         max-width: 900px;
         margin: 0 auto;
-        height: calc(100vh - 280px);
-        min-height: 300px;
-        max-height: calc(100vh - 280px);
+        height: calc(100vh - 180px);
+        min-height: 200px;
+        max-height: calc(100vh - 180px);
         overflow-y: auto !important;
         overflow-x: hidden !important;
-        padding: 1rem;
-        flex: 1;
+        padding: 0.5rem 1rem;
     }
     
     /* Custom scrollbar for chat container */
     .chat-container::-webkit-scrollbar {
-        width: 8px;
+        width: 6px;
     }
     
     .chat-container::-webkit-scrollbar-track {
         background: #f1f1f1;
-        border-radius: 4px;
+        border-radius: 3px;
     }
     
     .chat-container::-webkit-scrollbar-thumb {
         background: #888;
-        border-radius: 4px;
+        border-radius: 3px;
     }
     
     .chat-container::-webkit-scrollbar-thumb:hover {
@@ -111,9 +128,8 @@ st.markdown("""
         max-width: 900px;
         margin: 0 auto;
         background-color: white;
-        padding: 1rem 0;
+        padding: 0.5rem 0;
         z-index: 100;
-        flex-shrink: 0;
     }
     
     /* Ensure text input takes full width */
@@ -121,9 +137,27 @@ st.markdown("""
         width: 100%;
     }
     
-    /* Hide Streamlit default elements that might cause scrolling */
-    .element-container:has(> .stMarkdown > .chat-container) {
-        overflow: visible !important;
+    /* Compact title */
+    h1, h2 {
+        font-size: 1.5rem !important;
+        margin-bottom: 0.25rem !important;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+    
+    h3 {
+        font-size: 1rem !important;
+        margin-top: 0 !important;
+        margin-bottom: 0.25rem !important;
+    }
+    
+    /* Hide extra spacing */
+    .element-container {
+        margin-bottom: 0 !important;
+    }
+    
+    hr {
+        margin: 0.5rem 0 !important;
     }
     </style>
     <script>
@@ -145,7 +179,7 @@ st.markdown("""
         observer.observe(chatContainer, { childList: true, subtree: true });
     }
     
-    // Prevent body scroll on mount
+    // Prevent body scroll
     document.body.style.overflow = 'hidden';
     document.documentElement.style.overflow = 'hidden';
     </script>
@@ -157,9 +191,8 @@ if 'history' not in st.session_state:
 if 'last_query' not in st.session_state:
     st.session_state.last_query = ''
 
-# Header (fixed at top)
-st.title("📊 Financial RAG System")
-st.markdown("### Intelligent Document Retrieval & Analysis")
+# Header (fixed at top - compact)
+st.markdown("## 📊 Financial RAG System")
 st.markdown("---")
 
 # Default settings (no longer exposed in UI)
@@ -250,7 +283,6 @@ else:
 st.markdown('</div>', unsafe_allow_html=True)
 
 # Input area at the bottom - fixed
-st.markdown("---")
 query = st.text_input(
     "Message Financial RAG",
     placeholder="Ask me anything about financial statements, corporate disclosures, or director dealings...",
@@ -352,14 +384,4 @@ if query and query != st.session_state.get('last_query', ''):
         except Exception as e:
             st.error(f"❌ Error: {str(e)}")
             st.exception(e)
-
-# Footer
-st.markdown(
-    """
-    <div style='text-align: center; color: #999; font-size: 0.85rem; margin-top: 2rem;'>
-        <p>Financial RAG System | Powered by OpenAI, Cohere & Pinecone</p>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
 
