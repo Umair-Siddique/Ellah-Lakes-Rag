@@ -57,7 +57,7 @@ st.markdown("""
     
     /* Fix main container */
     .main .block-container {
-        padding: 0.25rem 1rem 0 1rem !important;
+        padding: 0 1rem 0 1rem !important;
         max-width: 100% !important;
         overflow: hidden !important;
         height: 100vh !important;
@@ -96,13 +96,14 @@ st.markdown("""
     .chat-container {
         max-width: 900px;
         margin: 0 auto;
-        height: calc(100vh - 150px);
+        height: calc(100vh - 100px);
         min-height: 200px;
-        max-height: calc(100vh - 150px);
+        max-height: calc(100vh - 100px);
         overflow-y: auto !important;
         overflow-x: hidden !important;
         padding: 0 1rem;
         margin-top: 0 !important;
+        padding-top: 0 !important;
     }
     
     /* Custom scrollbar for chat container */
@@ -200,9 +201,6 @@ if 'history' not in st.session_state:
 if 'last_query' not in st.session_state:
     st.session_state.last_query = ''
 
-# Header (fixed at top - compact)
-st.markdown("## 📊 Financial RAG System")
-
 # Default settings (no longer exposed in UI)
 top_k = 10
 rerank_top_n = 5
@@ -210,7 +208,9 @@ force_category = None
 
 # Sidebar
 with st.sidebar:
-    st.header("⚙️ Settings")
+    st.header("📊 Financial RAG System")
+    st.divider()
+    st.subheader("⚙️ Settings")
     
     # API Key status
     st.subheader("API Keys Status")
@@ -277,9 +277,9 @@ if st.session_state.history:
 else:
     # Welcome message when no history
     st.markdown("""
-    <div style='text-align: center; padding: 1.5rem 2rem; color: #666;'>
-        <h2 style='margin: 0; padding: 0;'>👋 Welcome to Financial RAG System</h2>
-        <p style='font-size: 1.1rem; margin-top: 0.75rem; margin-bottom: 0.5rem;'>
+    <div style='text-align: center; padding: 2rem 2rem; color: #666;'>
+        <h2 style='margin: 0; padding: 0; font-size: 1.8rem;'>👋 Welcome to Financial RAG System</h2>
+        <p style='font-size: 1.1rem; margin-top: 1rem; margin-bottom: 0.5rem;'>
             Ask me anything about financial statements, corporate disclosures, or director dealings.
         </p>
         <p style='font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 0; color: #888;'>
