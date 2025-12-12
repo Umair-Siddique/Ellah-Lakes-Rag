@@ -37,11 +37,22 @@ st.set_page_config(
 # Custom CSS for ChatGPT-like UI
 st.markdown("""
     <style>
-    /* Set main container to fixed height */
+    /* Prevent entire page from scrolling */
+    html, body, .main, [data-testid="stAppViewContainer"] {
+        overflow: hidden !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+    }
+    
+    /* Fix main container */
     .main .block-container {
         padding-top: 1rem;
         padding-bottom: 0;
         max-width: 100%;
+        overflow: hidden !important;
+        height: 100vh !important;
+        display: flex;
+        flex-direction: column;
     }
     
     /* Message styling */
@@ -63,16 +74,17 @@ st.markdown("""
         max-width: 80%;
     }
     
-    /* Chat messages container - scrollable with fixed height */
+    /* Chat messages container - ONLY this should scroll */
     .chat-container {
         max-width: 900px;
         margin: 0 auto;
-        height: calc(100vh - 320px);
-        min-height: 400px;
-        overflow-y: auto;
-        overflow-x: hidden;
+        height: calc(100vh - 280px);
+        min-height: 300px;
+        max-height: calc(100vh - 280px);
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
         padding: 1rem;
-        margin-bottom: 1rem;
+        flex: 1;
     }
     
     /* Custom scrollbar for chat container */
@@ -94,20 +106,24 @@ st.markdown("""
         background: #555;
     }
     
-    /* Input area styling */
+    /* Input area styling - fixed at bottom */
     .stTextInput {
         max-width: 900px;
         margin: 0 auto;
-        position: sticky;
-        bottom: 0;
         background-color: white;
         padding: 1rem 0;
         z-index: 100;
+        flex-shrink: 0;
     }
     
     /* Ensure text input takes full width */
     .stTextInput > div {
         width: 100%;
+    }
+    
+    /* Hide Streamlit default elements that might cause scrolling */
+    .element-container:has(> .stMarkdown > .chat-container) {
+        overflow: visible !important;
     }
     </style>
     <script>
@@ -128,6 +144,10 @@ st.markdown("""
     if (chatContainer) {
         observer.observe(chatContainer, { childList: true, subtree: true });
     }
+    
+    // Prevent body scroll on mount
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
     </script>
 """, unsafe_allow_html=True)
 
