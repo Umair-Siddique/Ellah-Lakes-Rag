@@ -57,7 +57,7 @@ st.markdown("""
     
     /* Fix main container */
     .main .block-container {
-        padding: 0.5rem 1rem 0 1rem !important;
+        padding: 0.25rem 1rem 0 1rem !important;
         max-width: 100% !important;
         overflow: hidden !important;
         height: 100vh !important;
@@ -96,12 +96,13 @@ st.markdown("""
     .chat-container {
         max-width: 900px;
         margin: 0 auto;
-        height: calc(100vh - 180px);
+        height: calc(100vh - 150px);
         min-height: 200px;
-        max-height: calc(100vh - 180px);
+        max-height: calc(100vh - 150px);
         overflow-y: auto !important;
         overflow-x: hidden !important;
-        padding: 0.5rem 1rem;
+        padding: 0 1rem;
+        margin-top: 0 !important;
     }
     
     /* Custom scrollbar for chat container */
@@ -140,24 +141,32 @@ st.markdown("""
     /* Compact title */
     h1, h2 {
         font-size: 1.5rem !important;
-        margin-bottom: 0.25rem !important;
+        margin-bottom: 0 !important;
         margin-top: 0 !important;
         padding-top: 0 !important;
+        padding-bottom: 0 !important;
     }
     
     h3 {
         font-size: 1rem !important;
         margin-top: 0 !important;
-        margin-bottom: 0.25rem !important;
+        margin-bottom: 0 !important;
     }
     
     /* Hide extra spacing */
     .element-container {
         margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
     }
     
     hr {
-        margin: 0.5rem 0 !important;
+        margin: 0.2rem 0 !important;
+        padding: 0 !important;
+    }
+    
+    /* Remove gap between header and chat */
+    .main .block-container > div {
+        gap: 0 !important;
     }
     </style>
     <script>
@@ -193,7 +202,6 @@ if 'last_query' not in st.session_state:
 
 # Header (fixed at top - compact)
 st.markdown("## 📊 Financial RAG System")
-st.markdown("---")
 
 # Default settings (no longer exposed in UI)
 top_k = 10
@@ -269,12 +277,12 @@ if st.session_state.history:
 else:
     # Welcome message when no history
     st.markdown("""
-    <div style='text-align: center; padding: 3rem 2rem; color: #666;'>
-        <h2>👋 Welcome to Financial RAG System</h2>
-        <p style='font-size: 1.1rem; margin-top: 1rem;'>
+    <div style='text-align: center; padding: 1.5rem 2rem; color: #666;'>
+        <h2 style='margin: 0; padding: 0;'>👋 Welcome to Financial RAG System</h2>
+        <p style='font-size: 1.1rem; margin-top: 0.75rem; margin-bottom: 0.5rem;'>
             Ask me anything about financial statements, corporate disclosures, or director dealings.
         </p>
-        <p style='font-size: 0.95rem; margin-top: 1rem; color: #888;'>
+        <p style='font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 0; color: #888;'>
             I'll search through the documents and provide you with accurate answers.
         </p>
     </div>
