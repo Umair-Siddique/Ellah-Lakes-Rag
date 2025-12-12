@@ -1,0 +1,35 @@
+{
+  "company_name": "Ellah Lakes Plc",
+  "rc_number": "34296",
+  "legal_entity_identifier": "7219037",
+  "insider_name": "CBO CAPITAL PARTNERS LIMITED",
+  "position_status": "Substantial Shareholder",
+  "insider_type": "Corporate",
+  "is_corporate_insider": true,
+  "transaction_nature": "Sale of shares",
+  "instrument_type": "shares",
+  "isin": "NGELLAHLAKE8",
+  "price_per_share": [
+    4.25
+  ],
+  "volume": [
+    5000000
+  ],
+  "currency": "NGN",
+  "aggregated_volume": 5000000,
+  "aggregated_price": 4.25,
+  "transaction_dates": [
+    "2021-04-28"
+  ],
+  "announcement_date": "2021-04-29",
+  "announcement_location": "Lagos",
+  "place_of_transaction": "Lagos",
+  "signatory_name": "Kenechi Ezezika",
+  "signatory_designation": "COMPANY SECRETARY",
+  "year": 2021,
+  "month": "04",
+  "document_type": "insider_dealing_notification",
+  "pdf_source": "C:\\Users\\umair\\Desktop\\Financial Rag\\dataset\\Director_Dealings\\58_Sample_share_dealing_notification_(CBO)_(28_April_2021).pdf",
+  "short_summary": "CBO Capital Partners Limited sold 5,000,000 shares of Ellah Lakes Plc at an average price of ₦4.25 on 28 April 2021.",
+  "detailed_summary": "**Insider Identification:**\nThe insider involved in the share dealing notification is CBO CAPITAL PARTNERS LIMITED. This entity is classified as a Substantial Shareholder. It is a corporate entity rather than an individual person.\n\n**Transaction Details:**\nThe nature of the transaction is the sale of shares. The financial instrument involved is identified by the ISIN code NGELLAHLAKE8. The transaction involved the sale of 5,000,000 shares at a price of ₦4.25 per share. The total aggregated volume for this transaction is 5,000,000 shares, with the price remaining consistent at ₦4.25 per share throughout the transaction. The currency used for this transaction is Nigerian Naira (NGN).\n\n**Dates and Locations:**\nThe transaction took place on 28 April 2021. The announcement of this transaction was made on 29 April 2021. The place of the transaction was Lagos, Nigeria.\n\n**Issuer Information:**\nThe company involved in this transaction is Ellah Lakes Plc. The RC number for the company is 34296, and the Legal Entity Identifier (LEI) is 7219037.\n\n**Signatory and Authorization:**\nThe notification was signed by Kenechi Ezezika, who holds the position of Company Secretary.\n\n**Regulatory Context:**\nThe document does not explicitly mention any regulatory bodies or specific rule references. However, it is implied that the notification is in compliance with the regulations set forth by relevant authorities such as the Nigerian Exchange Limited (NGX) and the Securities and Exchange Commission (SEC). The notification is categorized as an initial notification."
+}

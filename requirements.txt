@@ -1,0 +1,15 @@
+openai
+python-dotenv
+flask
+flask_cors
+pinecone
+pypdf
+pytesseract
+pdf2image
+Pillow
+cryptography
+cohere
+langchain
+langchain-cohere
+langchain-community
+streamlit

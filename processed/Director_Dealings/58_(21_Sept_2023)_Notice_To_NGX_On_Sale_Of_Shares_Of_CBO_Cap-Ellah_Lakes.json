@@ -1,0 +1,37 @@
+{
+  "company_name": "Ellah Lakes Plc",
+  "rc_number": "34296",
+  "legal_entity_identifier": "7219037",
+  "insider_name": "CBO CAPITAL PARTNERS LTD",
+  "position_status": "Substantial Shareholder",
+  "insider_type": "Corporate",
+  "is_corporate_insider": true,
+  "transaction_nature": "Sale of Shares",
+  "instrument_type": "shares",
+  "isin": "NGELLAHLAKE8",
+  "price_per_share": [
+    3.63,
+    3.63
+  ],
+  "volume": [
+    10583,
+    189417
+  ],
+  "currency": "NGN",
+  "aggregated_volume": 200000,
+  "aggregated_price": 3.63,
+  "transaction_dates": [
+    "2023-09-19"
+  ],
+  "announcement_date": "2023-09-22",
+  "announcement_location": "Lagos",
+  "place_of_transaction": "Lagos",
+  "signatory_name": "Olumoroti Alli (OAKE Legal)",
+  "signatory_designation": "COMPANY SECRETARY",
+  "year": 2023,
+  "month": "09",
+  "document_type": "insider_dealing_notification",
+  "pdf_source": "C:\\Users\\umair\\Desktop\\Financial Rag\\dataset\\Director_Dealings\\58_(21_Sept_2023)_Notice_To_NGX_On_Sale_Of_Shares_Of_CBO_Cap-Ellah_Lakes.pdf",
+  "short_summary": "CBO Capital Partners Limited sold 200,000 shares of Ellah Lakes Plc at an average price of ₦3.63 on 19 September 2023.",
+  "detailed_summary": "### Insider Identification:\n- **Full Name of the Insider/Director:** CBO CAPITAL PARTNERS LTD\n- **Position/Status:** Substantial Shareholder\n- **Type:** Corporate entity\n\n### Transaction Details:\n- **Nature of the Transaction:** Sale of Shares\n- **Instrument Type and ISIN Code:** Financial instrument identified as shares, ISIN: NGELLAHLAKE8\n- **Prices Mentioned:**\n  - Individual Prices: ₦3.63 per share\n  - Aggregated Price: ₦3.63\n- **Volumes Mentioned:**\n  - Individual Trades: 10,583 shares and 189,417 shares\n  - Total Aggregated Volume: 200,000 shares\n- **Currency Used:** Nigerian Naira (NGN)\n\n### Dates and Locations:\n- **Transaction Date:** 19 September 2023\n- **Announcement Date:** 22 September 2023\n- **Location of Announcement:** Lagos\n- **Place of Transaction:** Lagos\n\n### Issuer Information:\n- **Company Name:** Ellah Lakes Plc\n- **RC Number:** 34296\n- **Legal Entity Identifier (LEI):** 7219037\n\n### Signatory and Authorization:\n- **Name of Signatory:** Olumoroti Alli (OAKE Legal)\n- **Designation of Signatory:** Company Secretary\n\n### Regulatory Context:\n- **Regulatory Bodies Mentioned:** Nigerian Exchange Limited (NGX)\n- **Initial Notification/Amendment:** Initial Notification\n\nThis summary encapsulates all significant details from the insider share-dealing notification document, including the identity of the insider, transaction specifics, dates, issuer information, signatory details, and regulatory context."
+}

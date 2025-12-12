@@ -1,0 +1,35 @@
+{
+  "company_name": "Ellah Lakes Plc",
+  "rc_number": null,
+  "legal_entity_identifier": "7219037",
+  "insider_name": "CBO CAPITAL PARTNERS LTD",
+  "position_status": "Substantial Shareholder",
+  "insider_type": "Corporate",
+  "is_corporate_insider": true,
+  "transaction_nature": "Sale of Shares",
+  "instrument_type": "shares",
+  "isin": "NGELLAHLAKE8",
+  "price_per_share": [
+    4.25
+  ],
+  "volume": [
+    10000
+  ],
+  "currency": "NGN",
+  "aggregated_volume": 10000,
+  "aggregated_price": 4.25,
+  "transaction_dates": [
+    "2022-01-13"
+  ],
+  "announcement_date": "2022-01-17",
+  "announcement_location": "Lagos",
+  "place_of_transaction": "Lagos",
+  "signatory_name": "Kenechi Ezezika (Oake Legal)",
+  "signatory_designation": "COMPANY SECRETARY",
+  "year": 2022,
+  "month": "01",
+  "document_type": "insider_dealing_notification",
+  "pdf_source": "C:\\Users\\umair\\Desktop\\Financial Rag\\dataset\\Director_Dealings\\58_Notification_of_Share_Dealing_(17_January_2022).pdf",
+  "short_summary": "CBO Capital Partners Ltd sold 10,000 shares of Ellah Lakes Plc at an average price of ₦4.25 on 13 January 2022.",
+  "detailed_summary": "### Insider Identification:\n- **Full Name of the Insider/Director:** CBO CAPITAL PARTNERS LTD\n- **Position/Status:** Substantial Shareholder\n- **Type:** Corporate entity\n\n### Transaction Details:\n- **Nature of the Transaction:** Sale of Shares\n- **Instrument Type:** Shares\n- **ISIN Code:** NGELLAHLAKE8\n- **Prices Mentioned:** \n  - Individual Price: ₦4.25 per share\n  - Aggregated Price: ₦4.25\n- **Volumes Mentioned:** \n  - Individual Trade: 10,000 shares\n  - Total Aggregated Volume: 10,000 shares\n- **Currency Used:** Nigerian Naira (NGN)\n\n### Dates and Locations:\n- **Transaction Date:** 13 January 2022\n- **Announcement Date:** 17 January 2022\n- **Location of Announcement:** Lagos\n- **Place of Transaction:** Lagos\n\n### Issuer Information:\n- **Company Name:** Ellah Lakes Plc\n- **Legal Entity Identifier (LEI):** 7219037\n\n### Signatory and Authorization:\n- **Name of Signatory:** Kenechi Ezezika\n- **Designation/Role:** Company Secretary\n\n### Regulatory Context:\n- **Regulatory Bodies Mentioned:** Nigerian Exchange Limited (NGX)\n- **Initial Notification/Amendment:** Initial Notification\n\nThis summary encapsulates all significant details from the insider share-dealing notification document, including the identity of the insider, transaction specifics, dates, issuer information, signatory details, and regulatory context."
+}

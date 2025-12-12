@@ -1,0 +1,35 @@
+{
+  "company_name": "Ellah Lakes Plc",
+  "rc_number": null,
+  "legal_entity_identifier": "7219037",
+  "insider_name": "Chuka Mordi",
+  "position_status": "CEO/ Executive Director",
+  "insider_type": "Individual",
+  "is_corporate_insider": false,
+  "transaction_nature": "Sale of shares",
+  "instrument_type": "shares",
+  "isin": "NGELLAHLAKE8",
+  "price_per_share": [
+    4.25
+  ],
+  "volume": [
+    14220000
+  ],
+  "currency": "NGN",
+  "aggregated_volume": 14220000,
+  "aggregated_price": 60.435,
+  "transaction_dates": [
+    "2020-09-15"
+  ],
+  "announcement_date": "2020-09-17",
+  "announcement_location": "Lagos",
+  "place_of_transaction": "Lagos",
+  "signatory_name": "Kenechi Ezezika",
+  "signatory_designation": "Company Secretary",
+  "year": 2020,
+  "month": "09",
+  "document_type": "insider_dealing_notification",
+  "pdf_source": "C:\\Users\\umair\\Desktop\\Financial Rag\\dataset\\Director_Dealings\\58_Ellah_Lakes_Plc_-_Notice_of_partial_sale_of_shares_of_CBO_Capital_Partners_Limited.pdf",
+  "short_summary": "Chuka Mordi sold 14,220,000 shares of Ellah Lakes Plc at a price of ₦4.25 per share on 15 September 2020.",
+  "detailed_summary": "### Insider Identification:\n- **Full Name of the Insider/Director:** Chuka Mordi\n- **Position/Status:** CEO/Executive Director\n- **Type:** Individual person\n\n### Transaction Details:\n- **Nature of the Transaction:** Sale of shares\n- **Instrument Type:** Shares\n- **ISIN Code:** NGELLAHLAKE8\n- **Price:** ₦4.25 per share\n- **Volume:** 14,220,000 shares\n- **Aggregate Price:** ₦60,435,000\n- **Currency Used:** Nigerian Naira (NGN)\n\n### Dates and Locations:\n- **Transaction Date:** 15 September 2020\n- **Announcement Date:** 17 September 2020\n- **Place of Transaction:** Lagos\n\n### Issuer Information:\n- **Company Name:** Ellah Lakes Plc\n- **Legal Entity Identifier (LEI):** 7219037\n\n### Signatory and Authorization:\n- **Name of Signatory:** Kenechi Ezezika\n- **Designation of Signatory:** Company Secretary\n\n### Regulatory Context:\n- **Regulatory Bodies Mentioned:** Nigerian Exchange Limited (NGX)\n- **Initial Notification Date:** 15 September 2020\n\nThis summary encapsulates all significant details from the insider share-dealing notification document, including the identity of the insider, transaction specifics, dates, issuer information, signatory details, and relevant regulatory context."
+}

@@ -1,0 +1,65 @@
+{
+  "doc_id": "32368_ELLAH_LAKES_PLC SHARE_DEALING_NOTIFICATION_ _BLACKMAN",
+  "source_file": "C:\\Users\\umair\\Desktop\\Financial Rag\\dataset\\Corporate_Disclosures\\32368_ELLAH_LAKES_PLC SHARE_DEALING_NOTIFICATION_ _BLACKMAN.pdf",
+  "title": "Notification of Share Dealing by Insiders",
+  "doc_type": "regulatory_notice",
+  "disclosure_date": "2021-02-04",
+  "year": 2021,
+  "company_name": "Ellah Lakes Plc",
+  "rc_number": null,
+  "head_office_address": "No. 12 Ihama Road, G.R.A, Benin City, Edo State",
+  "website": "www.ellahlakes.com",
+  "meeting_type": null,
+  "meeting_date": null,
+  "meeting_time": null,
+  "meeting_location": null,
+  "agenda_items": [],
+  "register_closure_start": null,
+  "register_closure_end": null,
+  "closed_period_start": null,
+  "closed_period_end": null,
+  "directors_as_listed": [
+    "Olu Akpata",
+    "Frank Ellah",
+    "Chuka Mordi",
+    "Shehu Abubakar",
+    "Osaro Oyegun",
+    "Gbubemi Jakpa",
+    "Maxwell Oko",
+    "Nnenna Onyewuchi",
+    "Enotie Ogbebor",
+    "Chijioke Dozie",
+    "Hauwa Nuru",
+    "Joe Attueyi"
+  ],
+  "key_people_events": [
+    {
+      "name": "Blackman & Co. Limited",
+      "event": "announcement_subject",
+      "role": "Shareholder",
+      "effective_date": "2021-02-04"
+    },
+    {
+      "name": "Kenechi Ezezika",
+      "event": "continuing",
+      "role": "Company Secretary",
+      "effective_date": null
+    }
+  ],
+  "company_secretary": "Kenechi Ezezika (OAKE Legal)",
+  "signatory_name": null,
+  "event_category": "governance",
+  "transaction_type": "sale_of_shares",
+  "transaction_amount": 68221.0,
+  "currency": "NGN",
+  "counterparties": [
+    "Blackman & Co. Limited"
+  ],
+  "regulatory_bodies": [],
+  "regulatory_references": [],
+  "pages": [
+    1
+  ],
+  "citation_file": null,
+  "detailed_summary": "# Comprehensive Summary of Corporate Disclosure Document\n\n## Purpose and Nature of the Disclosure\nThe document serves as a notification of share dealing by insiders, specifically detailing transactions involving shares of Ellah Lakes Plc. It is intended to comply with regulatory requirements regarding insider trading disclosures.\n\n## Key Dates\n- **Initial Notification Date:** 4 February 2021\n- **Transaction Dates:** 20 and 21 January 2021\n\n## Company Information\n- **Issuer Name:** Ellah Lakes Plc.\n- **Legal Entity Identifier:** 7219037\n- **Head Office Address:** No. 12 Ihama Road, G.R.A, Benin City, Edo State\n- **Website:** www.ellahlakes.com\n\n## Directors Mentioned\nThe following individuals are listed as directors of Ellah Lakes Plc.:\n- Olu Akpata\n- Frank Ellah\n- Chuka Mordi\n- Shehu Abubakar\n- Osaro Oyegun\n- Gbubemi Jakpa\n- Maxwell Oko\n- Nnenna Onyewuchi\n- Enotie Ogbebor\n- Chijioke Dozie\n- Hauwa Nuru\n- Joe Attueyi\n\n## Insider Information\n- **Insider Name:** Blackman & Co. Limited\n- **Position/Status:** Shareholder\n\n## Transaction Details\n### Financial Instrument\n- **Type of Instrument:** Shares\n- **Identification Code:** ISIN: NGELLAHLAKE8\n\n### Nature of the Transaction\n- **Type of Transaction:** Sale of shares\n\n### Price and Volume\n- **Transaction Details:**\n  - 6,052 shares sold at N 4.25 per share\n  - 10,000 shares sold at N 4.25 per share\n- **Aggregate Information:**\n  - **Total Volume:** 16,052 shares\n  - **Total Price:** N 4.25 per share\n\n### Place of Transaction\n- **Location:** Lagos\n\n## Company Secretary\n- **Name:** Kenechi Ezezika\n- **Affiliation:** OAKE Legal\n\nThis summary encapsulates all significant details from the corporate disclosure document, including the purpose, key dates, company information, insider details, transaction specifics, and the company secretary's information."
+}
