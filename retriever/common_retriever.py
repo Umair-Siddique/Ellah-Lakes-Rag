@@ -78,7 +78,9 @@ Return ONLY valid JSON, no other text."""
 def _format_chat_history(
     chat_history: Optional[List[Dict[str, Any]]],
     max_messages: int = 5,
-    max_chars_per_message: int = 800,
+    max_chars_user: int = 800,
+    max_chars_assistant: int = 200,
+    include_assistant: bool = True,
 ) -> str:
     """
     Format recent chat history into a compact text block suitable for prompts.
@@ -97,13 +99,17 @@ def _format_chat_history(
         if not content:
             continue
 
-        # Prevent very long chat bubbles from dominating retrieval/generation prompts.
-        if len(content) > max_chars_per_message:
-            content = content[: max_chars_per_message - 1] + "…"
-
         if role == "user":
+            # Prevent very long user turns from dominating prompts.
+            if len(content) > max_chars_user:
+                content = content[: max_chars_user - 1] + "…"
             lines.append(f"User: {content}")
         elif role == "assistant":
+            if not include_assistant:
+                continue
+            # Do NOT feed entire prior answers back; that often causes repetition loops.
+            if len(content) > max_chars_assistant:
+                content = content[: max_chars_assistant - 1] + "…"
             lines.append(f"Assistant: {content}")
         else:
             # Ignore unknown roles (e.g., system/tool) to avoid contaminating prompts.
@@ -123,7 +129,12 @@ def _build_effective_query(
     We keep the user's current question intact, but optionally prepend the last
     few messages as disambiguating context ("it", "that company", etc.).
     """
-    context = _format_chat_history(chat_history, max_messages=max_history_messages)
+    # For retrieval/reranking, assistant messages often add noise and can create loops.
+    context = _format_chat_history(
+        chat_history,
+        max_messages=max_history_messages,
+        include_assistant=False,
+    )
     if not context:
         return query
 
@@ -301,6 +312,9 @@ def _generate_streaming_response(
     category: str,
     chat_history: Optional[List[Dict[str, Any]]] = None,
     max_history_messages: int = 5,
+    max_tokens: int = 700,
+    max_stream_chunks: int = 500,
+    max_stream_chars: int = 25000,
     model: str = "command-a-03-2025",
 ) -> Generator[str, None, None]:
     """
@@ -356,7 +370,12 @@ def _generate_streaming_response(
         context = "\n---\n".join(context_parts)
         
         # Create the preamble with context
-        chat_context = _format_chat_history(chat_history, max_messages=max_history_messages)
+        chat_context = _format_chat_history(
+            chat_history,
+            max_messages=max_history_messages,
+            include_assistant=True,
+            max_chars_assistant=200,
+        )
         chat_context_block = f"\n\nRecent conversation:\n{chat_context}\n" if chat_context else ""
 
         preamble = f"""You are a helpful financial assistant analyzing {category.replace('_', ' ')} documents.
@@ -370,15 +389,33 @@ Retrieved Documents:
         
         # Stream the response
         logger.info("Generating streaming response with Cohere...")
-        stream = co.chat_stream(
-            message=query,
-            preamble=preamble,
-            model=model,
-            temperature=0.3,
-        )
+        try:
+            # Prefer a hard token cap when supported by the SDK/API.
+            stream = co.chat_stream(
+                message=query,
+                preamble=preamble,
+                model=model,
+                temperature=0.2,
+                max_tokens=max_tokens,
+            )
+        except TypeError:
+            # Backwards-compatible fallback for older Cohere SDKs.
+            stream = co.chat_stream(
+                message=query,
+                preamble=preamble,
+                model=model,
+                temperature=0.2,
+            )
         
+        chunk_count = 0
+        total_chars = 0
         for event in stream:
             if event.event_type == "text-generation":
+                chunk_count += 1
+                total_chars += len(event.text or "")
+                if chunk_count > max_stream_chunks or total_chars > max_stream_chars:
+                    yield "\n\n[Truncated: response reached the streaming safety limit.]"
+                    return
                 yield event.text
             elif event.event_type == "stream-end":
                 # Log citations if available

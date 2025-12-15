@@ -41,7 +41,12 @@ def _recent_history_for_retriever(max_messages: int = 5) -> List[Dict[str, Any]]
                 # Drop the UI prefix line, keep the answer content.
                 content = "\n".join(lines[1:]).strip()
 
-        cleaned.append({"role": role, "content": content})
+            # Hard trim assistant messages so we don't feed long generations back in.
+            if len(content) > 200:
+                content = content[:199] + "…"
+
+        if role in ("user", "assistant"):
+            cleaned.append({"role": role, "content": content})
 
     return cleaned
 
