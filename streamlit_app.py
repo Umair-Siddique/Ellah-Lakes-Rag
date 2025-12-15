@@ -1,395 +1,105 @@
-"""
-Streamlit UI for Financial RAG System
+from __future__ import annotations
 
-To run this application:
-    streamlit run streamlit_app.py
-
-Make sure you have set the following environment variables in your .env file:
-    - OPENAI_API_KEY
-    - COHERE_API_KEY
-    - PINECONE_API_KEY
-    - INDEX_NAME
-"""
-import streamlit as st
 import sys
 from pathlib import Path
+from typing import Any, Dict, List
 
-# Add root directory to path
+import streamlit as st
+
 ROOT_DIR = Path(__file__).resolve().parent
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
-from retriever.common_retriever import (
-    _classify_query,
-    search,
-    _generate_streaming_response
-)
-from config import Config
+from retriever.common_retriever import search_and_generate
 
-# Page configuration
-st.set_page_config(
-    page_title="Financial RAG System",
-    page_icon="📊",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
 
-# Custom CSS for ChatGPT-like UI
-st.markdown("""
-    <style>
-    /* Prevent entire page from scrolling */
-    html, body {
-        overflow: hidden !important;
-        height: 100vh !important;
-        margin: 0;
-        padding: 0;
-    }
-    
-    [data-testid="stAppViewContainer"] {
-        overflow: hidden !important;
-        height: 100vh !important;
-    }
-    
-    .main {
-        overflow: hidden !important;
-        height: 100vh !important;
-    }
-    
-    /* Fix main container */
-    .main .block-container {
-        padding: 0 1rem 0 1rem !important;
-        max-width: 100% !important;
-        overflow: hidden !important;
-        height: 100vh !important;
-    }
-    
-    /* Header - compact */
-    .main .block-container > div:first-child {
-        flex-shrink: 0;
-    }
-    
-    /* Hide default streamlit padding */
-    .main .block-container > div {
-        gap: 0.5rem;
-    }
-    
-    /* Message styling */
-    .user-message {
-        padding: 1rem 1.5rem;
-        border-radius: 1rem;
-        background-color: #f7f7f8;
-        margin: 0.75rem 0;
-        max-width: 80%;
-        margin-left: auto;
-    }
-    
-    .assistant-message {
-        padding: 1rem 1.5rem;
-        border-radius: 1rem;
-        background-color: #ffffff;
-        border: 1px solid #e0e0e0;
-        margin: 0.75rem 0;
-        max-width: 80%;
-    }
-    
-    /* Chat messages container - ONLY this should scroll */
-    .chat-container {
-        max-width: 900px;
-        margin: 0 auto;
-        height: calc(100vh - 100px);
-        min-height: 200px;
-        max-height: calc(100vh - 100px);
-        overflow-y: auto !important;
-        overflow-x: hidden !important;
-        padding: 0 1rem;
-        margin-top: 0 !important;
-        padding-top: 0 !important;
-    }
-    
-    /* Custom scrollbar for chat container */
-    .chat-container::-webkit-scrollbar {
-        width: 6px;
-    }
-    
-    .chat-container::-webkit-scrollbar-track {
-        background: #f1f1f1;
-        border-radius: 3px;
-    }
-    
-    .chat-container::-webkit-scrollbar-thumb {
-        background: #888;
-        border-radius: 3px;
-    }
-    
-    .chat-container::-webkit-scrollbar-thumb:hover {
-        background: #555;
-    }
-    
-    /* Input area styling - fixed at bottom */
-    .stTextInput {
-        max-width: 900px;
-        margin: 0 auto;
-        background-color: white;
-        padding: 0.5rem 0;
-        z-index: 100;
-    }
-    
-    /* Ensure text input takes full width */
-    .stTextInput > div {
-        width: 100%;
-    }
-    
-    /* Compact title */
-    h1, h2 {
-        font-size: 1.5rem !important;
-        margin-bottom: 0 !important;
-        margin-top: 0 !important;
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
-    }
-    
-    h3 {
-        font-size: 1rem !important;
-        margin-top: 0 !important;
-        margin-bottom: 0 !important;
-    }
-    
-    /* Hide extra spacing */
-    .element-container {
-        margin-bottom: 0 !important;
-        padding-bottom: 0 !important;
-    }
-    
-    hr {
-        margin: 0.2rem 0 !important;
-        padding: 0 !important;
-    }
-    
-    /* Remove gap between header and chat */
-    .main .block-container > div {
-        gap: 0 !important;
-    }
-    </style>
-    <script>
-    // Auto-scroll chat container to bottom
-    function scrollToBottom() {
-        const chatContainer = document.querySelector('.chat-container');
-        if (chatContainer) {
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-        }
-    }
-    
-    // Run on page load
-    window.addEventListener('load', scrollToBottom);
-    
-    // Run after any changes (for Streamlit updates)
-    const observer = new MutationObserver(scrollToBottom);
-    const chatContainer = document.querySelector('.chat-container');
-    if (chatContainer) {
-        observer.observe(chatContainer, { childList: true, subtree: true });
-    }
-    
-    // Prevent body scroll
-    document.body.style.overflow = 'hidden';
-    document.documentElement.style.overflow = 'hidden';
-    </script>
-""", unsafe_allow_html=True)
+def _init_state() -> None:
+    if "messages" not in st.session_state:
+        st.session_state.messages: List[Dict[str, Any]] = []
 
-# Initialize session state
-if 'history' not in st.session_state:
-    st.session_state.history = []
-if 'last_query' not in st.session_state:
-    st.session_state.last_query = ''
 
-# Default settings (no longer exposed in UI)
-top_k = 10
-rerank_top_n = 5
-force_category = None
+def _recent_history_for_retriever(max_messages: int = 5) -> List[Dict[str, Any]]:
+    """
+    Return up to the last `max_messages` messages BEFORE the current user prompt.
 
-# Sidebar
-with st.sidebar:
-    st.header("📊 Financial RAG System")
-    st.divider()
-    st.subheader("⚙️ Settings")
-    
-    # API Key status
-    st.subheader("API Keys Status")
-    if Config.OPENAI_API_KEY:
-        st.success("✓ OpenAI API Key")
-    else:
-        st.error("✗ OpenAI API Key Missing")
-    
-    if Config.COHERE_API_KEY:
-        st.success("✓ Cohere API Key")
-    else:
-        st.error("✗ Cohere API Key Missing")
-    
-    if Config.PINECONE_API_KEY:
-        st.success("✓ Pinecone API Key")
-    else:
-        st.error("✗ Pinecone API Key Missing")
-    
-    st.divider()
-    
-    # Examples
-    st.subheader("📝 Example Queries")
-    st.markdown("""
-    **Financial Statements:**
-    - What were Ellah Lakes PLC's total assets in 2013?
-    - Show me the revenue trends
-    
-    **Corporate Disclosures:**
-    - What board meetings were scheduled in 2023?
-    - Tell me about recent corporate announcements
-    
-    **Director Dealings:**
-    - Which directors sold shares last year?
-    - Show insider trading activity
-    """)
-    
-    if st.button("Clear Chat History", use_container_width=True):
-        st.session_state.history = []
-        st.session_state.last_query = ''
-        st.rerun()
+    We also lightly sanitize assistant messages because this UI stores a prefix line
+    ("Retrieving from namespace: ...") inside the assistant content.
+    """
+    history = st.session_state.messages[:-1]  # exclude current user prompt (already appended)
+    recent = history[-max_messages:] if max_messages > 0 else history
 
-# Main content area - Chat interface
-st.markdown('<div class="chat-container">', unsafe_allow_html=True)
+    cleaned: List[Dict[str, Any]] = []
+    for msg in recent:
+        role = msg.get("role")
+        content = msg.get("content", "")
+        if not isinstance(content, str):
+            content = str(content)
 
-# Display chat history
-if st.session_state.history:
-    for item in st.session_state.history:
-        # User message
-        st.markdown(f"""
-        <div class="user-message">
-            <strong>You:</strong><br>
-            {item['query']}
-        </div>
-        """, unsafe_allow_html=True)
-        
-        # Assistant message
-        st.markdown(f"""
-        <div class="assistant-message">
-            <strong>Assistant:</strong>
-        </div>
-        """, unsafe_allow_html=True)
-        st.markdown(item['answer'])
-        st.markdown("")
-else:
-    # Welcome message when no history
-    st.markdown("""
-    <div style='text-align: center; padding: 2rem 2rem; color: #666;'>
-        <h2 style='margin: 0; padding: 0; font-size: 1.8rem;'>👋 Welcome to Financial RAG System</h2>
-        <p style='font-size: 1.1rem; margin-top: 1rem; margin-bottom: 0.5rem;'>
-            Ask me anything about financial statements, corporate disclosures, or director dealings.
-        </p>
-        <p style='font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 0; color: #888;'>
-            I'll search through the documents and provide you with accurate answers.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+        if role == "assistant":
+            lines = [ln for ln in content.splitlines() if ln.strip()]
+            if lines and lines[0].lower().startswith("retrieving from namespace:"):
+                # Drop the UI prefix line, keep the answer content.
+                content = "\n".join(lines[1:]).strip()
 
-st.markdown('</div>', unsafe_allow_html=True)
+        cleaned.append({"role": role, "content": content})
 
-# Input area at the bottom - fixed
-query = st.text_input(
-    "Message Financial RAG",
-    placeholder="Ask me anything about financial statements, corporate disclosures, or director dealings...",
-    key="query_input",
-    label_visibility="collapsed"
-)
+    return cleaned
 
-if query and query != st.session_state.get('last_query', ''):
-    # Store the current query to prevent reprocessing
-    st.session_state.last_query = query
-    
-    # Validate API keys
-    if not Config.OPENAI_API_KEY or not Config.COHERE_API_KEY or not Config.PINECONE_API_KEY:
-        st.error("❌ Missing API keys! Please set OPENAI_API_KEY, COHERE_API_KEY, and PINECONE_API_KEY in your .env file.")
-    else:
-        try:
-            # Show loading spinner
-            with st.spinner("Thinking..."):
-                # Classify the query
-                if force_category:
-                    category = force_category
-                    classification = {
-                        "category": category,
-                        "confidence": 1.0,
-                        "reasoning": "Category was manually forced",
-                    }
-                else:
-                    classification = _classify_query(query, model="gpt-4o-mini")
-                    category = classification["category"]
-                
-                confidence = classification['confidence']
-                reasoning = classification['reasoning']
-                category_display = category.replace('_', ' ').title()
-                
-                # Perform search with reranking
-                result = search(
-                    query=query,
-                    top_k=top_k,
-                    classification_model="gpt-4o-mini",
-                    filter_model=None,
-                    force_category=category,
-                    enable_rerank=True,
-                    rerank_top_n=rerank_top_n,
-                    rerank_model="rerank-english-v3.0"
+
+st.set_page_config(page_title="Financial RAG Retriever", layout="centered")
+st.title("Financial RAG Retriever")
+st.caption("Ask a question — the app will show which namespace it retrieves from.")
+
+_init_state()
+
+# Render chat history
+for msg in st.session_state.messages:
+    with st.chat_message(msg["role"]):
+        st.markdown(msg["content"])
+
+prompt = st.chat_input("Type your query…")
+if prompt:
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    with st.chat_message("user"):
+        st.markdown(prompt)
+
+    with st.chat_message("assistant"):
+        with st.spinner("Retrieving + reranking + generating…"):
+            try:
+                result = search_and_generate(
+                    query=prompt,
+                    chat_history=_recent_history_for_retriever(max_messages=5),
+                    max_history_messages=5,
+                    top_k=10,
+                    rerank_top_n=5,
                 )
-            
-            # User message
-            st.markdown(f"""
-            <div class="user-message">
-                <strong>You:</strong><br>
-                {query}
-            </div>
-            """, unsafe_allow_html=True)
-            
-            # Assistant message header
-            st.markdown(f"""
-            <div class="assistant-message">
-                <strong>Assistant:</strong>
-            </div>
-            """, unsafe_allow_html=True)
-            
-            # Display answer
-            if not result['results']:
-                answer = "I couldn't find relevant documents to answer your query. Please try rephrasing your question."
-                st.markdown(answer)
-            else:
-                answer_placeholder = st.empty()
-                full_response = ""
-                
-                # Generate streaming response
-                response_stream = _generate_streaming_response(
-                    query=query,
-                    documents=result['results'],
-                    category=category,
-                    model="command-a-03-2025"
-                )
-                
-                # Stream the response
+            except Exception as exc:
+                st.error(f"Retriever error: {exc}")
+                st.stop()
+
+        category = result.get("category", "unknown")
+        st.markdown(f"Retrieving from namespace: `{category}`")
+
+        # Stream the LLM response (after reranking) into the chat bubble.
+        response_stream = result.get("response_stream")
+        placeholder = st.empty()
+        full_response = ""
+
+        if response_stream is None:
+            full_response = "Error: response stream was not returned."
+            placeholder.markdown(full_response)
+        else:
+            try:
                 for chunk in response_stream:
                     full_response += chunk
-                    answer_placeholder.markdown(full_response + "▌")
-                
-                # Final answer without cursor
-                answer_placeholder.markdown(full_response)
-                answer = full_response
-            
-            # Store in history
-            st.session_state.history.append({
-                'query': query,
-                'answer': answer,
-                'category': category_display,
-                'confidence': confidence,
-                'num_docs': len(result['results'])
-            })
-            
-            # Rerun to show the new message in chat
-            st.rerun()
-            
-        except Exception as e:
-            st.error(f"❌ Error: {str(e)}")
-            st.exception(e)
+                    placeholder.markdown(full_response)
+            except Exception as exc:
+                full_response += f"\n\nError generating response: {exc}"
+                placeholder.markdown(full_response)
 
+    st.session_state.messages.append(
+        {
+            "role": "assistant",
+            "content": f"Retrieving from namespace: `{category}`\n\n{full_response}",
+        }
+    )

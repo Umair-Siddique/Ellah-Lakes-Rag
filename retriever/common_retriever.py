@@ -75,6 +75,65 @@ If the query is ambiguous or could belong to multiple categories, choose the mos
 Return ONLY valid JSON, no other text."""
 
 
+def _format_chat_history(
+    chat_history: Optional[List[Dict[str, Any]]],
+    max_messages: int = 5,
+    max_chars_per_message: int = 800,
+) -> str:
+    """
+    Format recent chat history into a compact text block suitable for prompts.
+
+    Expected message shape: {"role": "user"|"assistant", "content": "..."}.
+    """
+    if not chat_history:
+        return ""
+
+    recent = chat_history[-max_messages:] if max_messages > 0 else chat_history
+    lines: List[str] = []
+
+    for msg in recent:
+        role = (msg.get("role") or "").strip().lower()
+        content = (msg.get("content") or "").strip()
+        if not content:
+            continue
+
+        # Prevent very long chat bubbles from dominating retrieval/generation prompts.
+        if len(content) > max_chars_per_message:
+            content = content[: max_chars_per_message - 1] + "…"
+
+        if role == "user":
+            lines.append(f"User: {content}")
+        elif role == "assistant":
+            lines.append(f"Assistant: {content}")
+        else:
+            # Ignore unknown roles (e.g., system/tool) to avoid contaminating prompts.
+            continue
+
+    return "\n".join(lines).strip()
+
+
+def _build_effective_query(
+    query: str,
+    chat_history: Optional[List[Dict[str, Any]]],
+    max_history_messages: int = 5,
+) -> str:
+    """
+    Build the query used for classification/retrieval/reranking.
+
+    We keep the user's current question intact, but optionally prepend the last
+    few messages as disambiguating context ("it", "that company", etc.).
+    """
+    context = _format_chat_history(chat_history, max_messages=max_history_messages)
+    if not context:
+        return query
+
+    return (
+        "Conversation context (most recent last):\n"
+        f"{context}\n\n"
+        f"Current question: {query}"
+    )
+
+
 def _classify_query(query: str, model: str = "gpt-4o-mini") -> Dict[str, Any]:
     """
     Classify the query to determine which retriever to use.
@@ -240,6 +299,8 @@ def _generate_streaming_response(
     query: str,
     documents: List[Dict[str, Any]],
     category: str,
+    chat_history: Optional[List[Dict[str, Any]]] = None,
+    max_history_messages: int = 5,
     model: str = "command-a-03-2025",
 ) -> Generator[str, None, None]:
     """
@@ -295,9 +356,13 @@ def _generate_streaming_response(
         context = "\n---\n".join(context_parts)
         
         # Create the preamble with context
+        chat_context = _format_chat_history(chat_history, max_messages=max_history_messages)
+        chat_context_block = f"\n\nRecent conversation:\n{chat_context}\n" if chat_context else ""
+
         preamble = f"""You are a helpful financial assistant analyzing {category.replace('_', ' ')} documents.
 Use the following retrieved documents to answer the user's question accurately and comprehensively.
 If the documents don't contain enough information to answer the question, say so.
+{chat_context_block}
 
 Retrieved Documents:
 {context}
@@ -333,6 +398,8 @@ def search(
     classification_model: str = "gpt-4o-mini",
     filter_model: Optional[str] = None,
     force_category: Optional[str] = None,
+    chat_history: Optional[List[Dict[str, Any]]] = None,
+    max_history_messages: int = 5,
     enable_rerank: bool = False,
     rerank_top_n: Optional[int] = None,
     rerank_model: str = "rerank-english-v3.0",
@@ -358,6 +425,12 @@ def search(
         - results: List of search results (reranked if enabled)
         - formatted_results: List of formatted result strings
     """
+    effective_query = _build_effective_query(
+        query=query,
+        chat_history=chat_history,
+        max_history_messages=max_history_messages,
+    )
+
     # Determine category
     if force_category:
         if force_category not in ["financial_statements", "corporate_disclosure", "director_dealing"]:
@@ -370,7 +443,7 @@ def search(
         }
         logger.info("Using forced category: %s", category)
     else:
-        classification = _classify_query(query, model=classification_model)
+        classification = _classify_query(effective_query, model=classification_model)
         category = classification["category"]
     
     # Route to appropriate retriever
@@ -379,22 +452,22 @@ def search(
     
     if category == "financial_statements":
         logger.info("Routing to financial_statements_retriever")
-        results = search_financial_statements(query, top_k=top_k, filter_model=filter_model)
+        results = search_financial_statements(effective_query, top_k=top_k, filter_model=filter_model)
         formatter = format_financial_match
     
     elif category == "corporate_disclosure":
         logger.info("Routing to corporate_disclosure_retriever")
-        results = search_corporate_disclosures(query, top_k=top_k, filter_model=filter_model)
+        results = search_corporate_disclosures(effective_query, top_k=top_k, filter_model=filter_model)
         formatter = format_corporate_match
     
     elif category == "director_dealing":
         logger.info("Routing to director_dealing_retriever")
-        results = search_director_dealings(query, top_k=top_k, filter_model=filter_model)
+        results = search_director_dealings(effective_query, top_k=top_k, filter_model=filter_model)
         formatter = format_director_match
     
     # Rerank if enabled
     if enable_rerank and results:
-        results = _rerank_documents(query, results, top_n=rerank_top_n, model=rerank_model)
+        results = _rerank_documents(effective_query, results, top_n=rerank_top_n, model=rerank_model)
     
     # Format results
     formatted_results = []
@@ -415,6 +488,8 @@ def search_and_generate(
     classification_model: str = "gpt-4o-mini",
     filter_model: Optional[str] = None,
     force_category: Optional[str] = None,
+    chat_history: Optional[List[Dict[str, Any]]] = None,
+    max_history_messages: int = 5,
     rerank_top_n: Optional[int] = None,
     rerank_model: str = "rerank-english-v3.0",
     chat_model: str = "command-a-03-2025",
@@ -447,6 +522,8 @@ def search_and_generate(
         classification_model=classification_model,
         filter_model=filter_model,
         force_category=force_category,
+        chat_history=chat_history,
+        max_history_messages=max_history_messages,
         enable_rerank=True,
         rerank_top_n=rerank_top_n,
         rerank_model=rerank_model,
@@ -457,6 +534,8 @@ def search_and_generate(
         query=query,
         documents=search_result["results"],
         category=search_result["category"],
+        chat_history=chat_history,
+        max_history_messages=max_history_messages,
         model=chat_model,
     )
     
