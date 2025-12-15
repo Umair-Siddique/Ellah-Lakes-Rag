@@ -18,39 +18,6 @@ def _init_state() -> None:
         st.session_state.messages: List[Dict[str, Any]] = []
 
 
-def _recent_history_for_retriever(max_messages: int = 5) -> List[Dict[str, Any]]:
-    """
-    Return up to the last `max_messages` messages BEFORE the current user prompt.
-
-    We also lightly sanitize assistant messages because this UI stores a prefix line
-    ("Retrieving from namespace: ...") inside the assistant content.
-    """
-    history = st.session_state.messages[:-1]  # exclude current user prompt (already appended)
-    recent = history[-max_messages:] if max_messages > 0 else history
-
-    cleaned: List[Dict[str, Any]] = []
-    for msg in recent:
-        role = msg.get("role")
-        content = msg.get("content", "")
-        if not isinstance(content, str):
-            content = str(content)
-
-        if role == "assistant":
-            lines = [ln for ln in content.splitlines() if ln.strip()]
-            if lines and lines[0].lower().startswith("retrieving from namespace:"):
-                # Drop the UI prefix line, keep the answer content.
-                content = "\n".join(lines[1:]).strip()
-
-            # Hard trim assistant messages so we don't feed long generations back in.
-            if len(content) > 200:
-                content = content[:199] + "…"
-
-        if role in ("user", "assistant"):
-            cleaned.append({"role": role, "content": content})
-
-    return cleaned
-
-
 st.set_page_config(page_title="Financial RAG Retriever", layout="centered")
 st.title("Financial RAG Retriever")
 st.caption("Ask a question — the app will show which namespace it retrieves from.")
@@ -71,12 +38,13 @@ if prompt:
     with st.chat_message("assistant"):
         with st.spinner("Retrieving + reranking + generating…"):
             try:
+                # Get last 5 messages for context (excluding the current message)
+                last_messages = st.session_state.messages[-5:] if len(st.session_state.messages) > 0 else []
                 result = search_and_generate(
                     query=prompt,
-                    chat_history=_recent_history_for_retriever(max_messages=5),
-                    max_history_messages=5,
                     top_k=10,
                     rerank_top_n=5,
+                    chat_history=last_messages
                 )
             except Exception as exc:
                 st.error(f"Retriever error: {exc}")
