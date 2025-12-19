@@ -75,6 +75,20 @@ If the query is ambiguous or could belong to multiple categories, choose the mos
 Return ONLY valid JSON, no other text."""
 
 
+def _get_cohere_client():
+    """
+    Return a Cohere ClientV2 for v2 API endpoints.
+    """
+    if not Config.COHERE_API_KEY:
+        return None
+    try:
+        # Use Cohere Python SDK v5+ (v2 API)
+        return cohere.ClientV2(api_key=Config.COHERE_API_KEY)
+    except AttributeError:
+        logger.error("Cohere ClientV2 not available. Please upgrade: pip install --upgrade cohere")
+        return None
+
+
 def _classify_query(query: str, model: str = "gpt-4o-mini") -> Dict[str, Any]:
     """
     Classify the query to determine which retriever to use.
@@ -147,13 +161,13 @@ def _rerank_documents(
     model: str = "rerank-english-v3.0",
 ) -> List[Dict[str, Any]]:
     """
-    Rerank documents using Cohere's rerank API.
+    Rerank documents using Cohere's v2 rerank API.
     
     Args:
         query: The user's query
         documents: List of document matches from vector search
         top_n: Number of top documents to return after reranking (None = all)
-        model: Cohere rerank model to use
+        model: Cohere rerank model to use (e.g., "rerank-english-v3.0", "rerank-multilingual-v3.0")
     
     Returns:
         Reranked list of documents with updated scores
@@ -165,9 +179,12 @@ def _rerank_documents(
     if not documents:
         return documents
     
+    co = _get_cohere_client()
+    if co is None:
+        logger.warning("Cohere client unavailable; skipping reranking.")
+        return documents
+
     try:
-        co = cohere.Client(Config.COHERE_API_KEY)
-        
         # Prepare documents for reranking - use summary or text content
         docs_for_rerank = []
         for doc in documents:
@@ -184,29 +201,47 @@ def _rerank_documents(
             logger.warning("No text content found in documents for reranking")
             return documents
         
-        # Call Cohere rerank API
-        logger.info("Reranking %d documents with Cohere...", len(docs_for_rerank))
+        # Limit to 1000 documents as per Cohere recommendation
+        if len(docs_for_rerank) > 1000:
+            logger.warning("Too many documents (%d), limiting to 1000 for reranking", len(docs_for_rerank))
+            docs_for_rerank = docs_for_rerank[:1000]
+            documents = documents[:1000]
+        
+        # Call Cohere v2 rerank API
+        logger.info("Reranking %d documents with Cohere model '%s'...", len(docs_for_rerank), model)
+        
+        # Determine top_n - if not specified, return all documents
+        if top_n is None:
+            top_n_val = len(docs_for_rerank)
+        else:
+            top_n_val = min(top_n, len(docs_for_rerank))
+        
+        # Make the v2 API call according to official docs
         rerank_response = co.rerank(
+            model=model,
             query=query,
             documents=docs_for_rerank,
-            top_n=top_n or len(docs_for_rerank),
-            model=model,
+            top_n=top_n_val,
         )
         
         # Reorder documents based on rerank results
         reranked_docs = []
         
-        # Access results properly from Cohere response
+        # Access results from Cohere v2 API response
         if hasattr(rerank_response, 'results'):
             results = rerank_response.results
         elif isinstance(rerank_response, dict):
             results = rerank_response.get('results', [])
         else:
-            logger.warning("Unexpected rerank response format")
+            logger.warning("Unexpected rerank response format: %s", type(rerank_response))
+            return documents
+        
+        if not results:
+            logger.warning("No results returned from reranking")
             return documents
         
         for result in results:
-            # Get index and relevance score
+            # Get index and relevance score from v2 API response
             if hasattr(result, 'index'):
                 original_idx = result.index
                 relevance = result.relevance_score
@@ -214,25 +249,52 @@ def _rerank_documents(
                 original_idx = result.get('index')
                 relevance = result.get('relevance_score', 0)
             else:
+                logger.warning("Unexpected result format: %s", type(result))
                 continue
             
-            if original_idx is not None and original_idx < len(documents):
-                reranked_doc = documents[original_idx].copy()
+            if original_idx is not None and 0 <= original_idx < len(documents):
+                original_doc = documents[original_idx]
+                if original_doc is None:
+                    logger.warning("Document at index %d is None, skipping", original_idx)
+                    continue
+                
+                # Handle both dict and Pinecone ScoredVector objects
+                if isinstance(original_doc, dict):
+                    reranked_doc = original_doc.copy()
+                elif hasattr(original_doc, 'to_dict'):
+                    # Pinecone ScoredVector has to_dict() method
+                    reranked_doc = original_doc.to_dict()
+                elif hasattr(original_doc, '__dict__'):
+                    # Fallback: convert object attributes to dict
+                    reranked_doc = {
+                        'id': getattr(original_doc, 'id', None),
+                        'score': getattr(original_doc, 'score', 0),
+                        'metadata': getattr(original_doc, 'metadata', {}),
+                        'values': getattr(original_doc, 'values', []),
+                    }
+                else:
+                    logger.warning("Document at index %d is not convertible: %s", original_idx, type(original_doc))
+                    continue
+                
                 # Update the score with rerank score
                 reranked_doc["score"] = relevance
                 reranked_doc["rerank_score"] = relevance
                 reranked_docs.append(reranked_doc)
         
         if reranked_docs:
-            logger.info("Reranking complete. Top score: %.4f", reranked_docs[0]["score"])
+            logger.info(
+                "Reranking complete. Returned %d/%d documents. Top score: %.4f",
+                len(reranked_docs),
+                len(documents),
+                reranked_docs[0]["score"]
+            )
+            return reranked_docs
         else:
-            logger.warning("No documents were reranked, returning originals")
+            logger.warning("No documents were reranked successfully, returning originals")
             return documents
         
-        return reranked_docs
-        
     except Exception as exc:
-        logger.error("Reranking failed: %s. Returning original documents.", exc)
+        logger.error("Reranking failed: %s. Returning original documents.", exc, exc_info=True)
         return documents
 
 
@@ -264,8 +326,14 @@ def _generate_streaming_response(
         yield "No relevant documents were found to answer your query."
         return
     
+    co = _get_cohere_client()
+    if co is None:
+        yield "Error: Cohere client could not be initialized."
+        return
+
     try:
-        co = cohere.Client(Config.COHERE_API_KEY)
+        # Log how many documents we're using for generation
+        logger.info("Generating response using %d documents", len(documents))
         
         # Prepare context from documents
         context_parts = []
@@ -305,37 +373,56 @@ Retrieved Documents:
 {context}
 """
         
-        # Prepare chat history for Cohere (convert to their format)
-        cohere_chat_history = []
+        # Prepare chat history for Cohere v2 format
+        cohere_messages = []
         if chat_history:
             for msg in chat_history:
                 role = msg.get("role")
                 content = msg.get("content", "")
-                # Convert to Cohere format (USER/CHATBOT)
+                # Convert to Cohere v2 format
                 if role == "user":
-                    cohere_chat_history.append({"role": "USER", "message": content})
+                    cohere_messages.append({"role": "user", "content": content})
                 elif role == "assistant":
-                    cohere_chat_history.append({"role": "CHATBOT", "message": content})
+                    cohere_messages.append({"role": "assistant", "content": content})
         
-        # Stream the response
-        logger.info("Generating streaming response with Cohere (with %d history messages)...", len(cohere_chat_history))
+        # Add the current user query with context prepended
+        # Since v2 API chat_stream doesn't accept 'system' parameter,
+        # we include the preamble/context in the user message
+        query_with_context = f"{preamble}\n\nUser Question: {query}"
+        cohere_messages.append({"role": "user", "content": query_with_context})
+        
+        # Stream the response using v2 API
+        logger.info("Generating streaming response with Cohere v2 (with %d history messages)...", len(cohere_messages) - 1)
+        
+        # For v2 API (cohere>=5.0.0), use chat_stream() method
         stream = co.chat_stream(
-            message=query,
-            preamble=preamble,
             model=model,
+            messages=cohere_messages,
             temperature=0.3,
-            chat_history=cohere_chat_history if cohere_chat_history else None,
         )
         
         for event in stream:
-            if event.event_type == "text-generation":
+            # V2 API streaming events - handle different event types
+            if hasattr(event, 'type'):
+                event_type = event.type
+                
+                # Content delta event contains the actual text chunks
+                if event_type == "content-delta":
+                    if hasattr(event, 'delta') and hasattr(event.delta, 'message'):
+                        if hasattr(event.delta.message, 'content') and hasattr(event.delta.message.content, 'text'):
+                            yield event.delta.message.content.text
+                
+                # Message end event signals completion
+                elif event_type == "message-end":
+                    logger.info("Response generation complete")
+                    break
+            
+            # Fallback for simpler event structures
+            elif hasattr(event, 'delta'):
+                if hasattr(event.delta, 'text'):
+                    yield event.delta.text
+            elif hasattr(event, 'text'):
                 yield event.text
-            elif event.event_type == "stream-end":
-                # Log citations if available
-                if hasattr(event, "response") and hasattr(event.response, "citations"):
-                    citations = event.response.citations
-                    if citations is not None:
-                        logger.info("Response generated with %d citations", len(citations))
         
     except Exception as exc:
         logger.error("Response generation failed: %s", exc)
@@ -348,7 +435,7 @@ def search(
     classification_model: str = "gpt-4o-mini",
     filter_model: Optional[str] = None,
     force_category: Optional[str] = None,
-    enable_rerank: bool = False,
+    enable_rerank: bool = True,
     rerank_top_n: Optional[int] = None,
     rerank_model: str = "rerank-english-v3.0",
 ) -> Dict[str, Any]:
@@ -409,7 +496,9 @@ def search(
     
     # Rerank if enabled
     if enable_rerank and results:
+        logger.info("Reranking enabled: will rerank %d documents to top %s", len(results), rerank_top_n or "all")
         results = _rerank_documents(query, results, top_n=rerank_top_n, model=rerank_model)
+        logger.info("After reranking: %d documents returned", len(results))
     
     # Format results
     formatted_results = []
@@ -434,6 +523,7 @@ def search_and_generate(
     rerank_model: str = "rerank-english-v3.0",
     chat_model: str = "command-a-03-2025",
     chat_history: Optional[List[Dict[str, str]]] = None,
+    enable_rerank: bool = True,
 ) -> Dict[str, Any]:
     """
     Complete RAG pipeline: search, rerank, and generate streaming response.
@@ -457,14 +547,15 @@ def search_and_generate(
         - formatted_results: Formatted result strings
         - response_stream: Generator for streaming response
     """
-    # Search with reranking enabled
+    # Search (enable rerank only if Cohere is configured and enabled)
+    do_rerank = enable_rerank and bool(Config.COHERE_API_KEY)
     search_result = search(
         query=query,
         top_k=top_k,
         classification_model=classification_model,
         filter_model=filter_model,
         force_category=force_category,
-        enable_rerank=True,
+        enable_rerank=do_rerank,
         rerank_top_n=rerank_top_n,
         rerank_model=rerank_model,
     )
