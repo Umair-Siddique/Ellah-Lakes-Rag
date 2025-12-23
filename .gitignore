@@ -2,3 +2,7 @@
 dataset_ellah_lakes/
 processed/
 processed_data/
+__pycache__/
+*.pyc
+.venv/
+venv/

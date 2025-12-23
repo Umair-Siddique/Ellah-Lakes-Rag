@@ -27,7 +27,7 @@ from csv_agent.csv_retriver_from_1960 import query_csv as query_gdp  # noqa: E40
 
 
 # Default model can be overridden with OPENAI_MODEL env var
-DEFAULT_MODEL = os.getenv("OPENAI_MODEL", "gpt-5")
+DEFAULT_MODEL = os.getenv("OPENAI_MODEL", "gpt-4")
 
 
 def _ensure_openai_llm(model: str = DEFAULT_MODEL) -> None:

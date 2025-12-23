@@ -25,7 +25,7 @@ if str(PROJECT_ROOT) not in sys.path:
 from config import Config
 
 # Default model can be overridden with OPENAI_MODEL env var
-DEFAULT_MODEL = os.getenv("OPENAI_MODEL", "gpt-5")
+DEFAULT_MODEL = os.getenv("OPENAI_MODEL", "gpt-4")
 
 # Choose a single CSV; adjust here if you want the other dataset.
 DATASET_PATH = (

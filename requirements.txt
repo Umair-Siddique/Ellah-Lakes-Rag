@@ -15,5 +15,6 @@ langchain-cohere
 langchain-community
 streamlit
 llama-index
+llama-index-llms-openai
 llama-index-experimental
 pandas
