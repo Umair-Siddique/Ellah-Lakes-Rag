@@ -17,10 +17,6 @@ from csv_agent.csv_common_retriever import query_with_tools as query_csv_router
 def _init_state() -> None:
     if "messages" not in st.session_state:
         st.session_state.messages: List[Dict[str, Any]] = []
-    # Used to reduce cold-start latency on Streamlit Cloud by skipping reranking
-    # for the first couple of RAG queries in a session.
-    if "rag_query_count" not in st.session_state:
-        st.session_state.rag_query_count = 0
 
 
 st.set_page_config(page_title="Financial RAG Retriever", layout="centered")
@@ -49,17 +45,7 @@ if prompt:
 
     with st.chat_message("assistant"):
         if mode == "Ellah Lakes RAG":
-            # Track how many RAG queries have been run in this Streamlit session.
-            st.session_state.rag_query_count += 1
-            enable_rerank = st.session_state.rag_query_count > 2
-
-            spinner_label = (
-                "Retrieving + reranking + generating…"
-                if enable_rerank
-                else "Retrieving + generating… (rerank warm-up skipped)"
-            )
-
-            with st.spinner(spinner_label):
+            with st.spinner("Retrieving + reranking + generating…"):
                 try:
                     last_messages = st.session_state.messages[-5:] if len(st.session_state.messages) > 0 else []
                     
@@ -68,7 +54,6 @@ if prompt:
                         query=prompt,
                         top_k=10,
                         rerank_top_n=5,
-                        enable_rerank=enable_rerank,
                         chat_history=last_messages
                     )
                     
