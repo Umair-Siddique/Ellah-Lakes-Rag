@@ -1,0 +1,350 @@
+[
+  {
+    "company_name": "Ellah Lakes Plc",
+    "rc_number": "34296",
+    "legal_entity_identifier": "7219037",
+    "insider_name": "CBO CAPITAL PARTNERS LTD",
+    "position_status": "Substantial Shareholder",
+    "insider_type": "Corporate",
+    "is_corporate_insider": true,
+    "transaction_type": "Sale of Shares",
+    "instrument": "ISIN: NGELLAHLAKE8",
+    "price_per_share": [
+      3.63
+    ],
+    "volume": [
+      200000
+    ],
+    "aggregated_volume": "200000",
+    "aggregated_price": "N3.63",
+    "transaction_dates": [
+      "2023-09-19"
+    ],
+    "announcement_date": "2023-09-22",
+    "location": "Lagos",
+    "signatory_name": "Olumoroti Alli",
+    "signatory_designation": "COMPANY SECRETARY",
+    "year": "2023",
+    "month": "09",
+    "document_type": "insider_dealing_notification",
+    "pdf_source": "C:\\Users\\umair\\Desktop\\Financial Rag\\dataset\\Director_Dealings\\58_(21_Sept_2023)_Notice_To_NGX_On_Sale_Of_Shares_Of_CBO_Cap-Ellah_Lakes.pdf",
+    "summary": "CBO CAPITAL PARTNERS LTD, a substantial shareholder of Ellah Lakes Plc, sold a total of 200,000 shares at a price of N3.63 per share on September 19, 2023. The transaction was announced on September 22, 2023.",
+    "short_summary": "CBO CAPITAL PARTNERS LTD sold 200,000 shares of Ellah Lakes Plc at N3.63 per share."
+  },
+  {
+    "company_name": "Ellah Lakes Plc",
+    "rc_number": "34296",
+    "legal_entity_identifier": "7219037",
+    "insider_name": "CBO CAPITAL PARTNERS LTD",
+    "position_status": "Substantial Shareholder",
+    "insider_type": "Corporate",
+    "is_corporate_insider": true,
+    "transaction_type": "Sale of Shares",
+    "instrument": "ISIN: NGELLAHLAKE8",
+    "price_per_share": [
+      3.63
+    ],
+    "volume": [
+      200000
+    ],
+    "aggregated_volume": "200000",
+    "aggregated_price": "N3.63",
+    "transaction_dates": [
+      "2023-09-19"
+    ],
+    "announcement_date": "2023-09-22",
+    "location": "Lagos",
+    "signatory_name": "Olumoroti Alli",
+    "signatory_designation": "COMPANY SECRETARY",
+    "year": "2023",
+    "month": "09",
+    "document_type": "insider_dealing_notification",
+    "pdf_source": "C:\\Users\\umair\\Desktop\\Financial Rag\\dataset\\Director_Dealings\\58_(21_Sept_2023)_Notice_To_NGX_On_Sale_Of_Shares_Of_CBO_Cap-Ellah_Lakes.pdf",
+    "summary": "CBO CAPITAL PARTNERS LTD, a substantial shareholder of Ellah Lakes Plc, sold a total of 200,000 shares at a price of N3.63 per share on September 19, 2023. The transaction was announced on September 22, 2023.",
+    "short_summary": "CBO CAPITAL PARTNERS LTD sold 200,000 shares of Ellah Lakes Plc at N3.63 per share."
+  },
+  {
+    "company_name": "Ellah Lakes Plc",
+    "rc_number": null,
+    "legal_entity_identifier": "7219037",
+    "insider_name": "CBO CAPITAL PARTNERS LTD",
+    "position_status": "Substantial Shareholder",
+    "insider_type": "Corporate",
+    "is_corporate_insider": true,
+    "transaction_type": "Sale of Shares",
+    "instrument": "Shares",
+    "price_per_share": [
+      3.58,
+      3.93,
+      4.3
+    ],
+    "volume": [
+      10000000,
+      333000,
+      10000000
+    ],
+    "aggregated_volume": "20333000",
+    "aggregated_price": "3.94",
+    "transaction_dates": [
+      "2022-08-08",
+      "2022-08-09",
+      "2022-08-10"
+    ],
+    "announcement_date": "2022-08-10",
+    "location": "Lagos",
+    "signatory_name": "Olumoroti Alli",
+    "signatory_designation": "COMPANY SECRETARY",
+    "year": "2022",
+    "month": "08",
+    "document_type": "insider_dealing_notification",
+    "pdf_source": "C:\\Users\\umair\\Desktop\\Financial Rag\\dataset\\Director_Dealings\\58_Ellah_Lakes_-_Notification_of_Insider_Dealing_(10_Aug_2022).pdf",
+    "summary": "CBO CAPITAL PARTNERS LTD, a substantial shareholder of Ellah Lakes Plc, sold a total of 20,333,000 shares across three transactions on August 8, 9, and 10, 2022. The shares were sold at prices of N3.58, N3.93, and N4.30 per share, respectively.",
+    "short_summary": "CBO CAPITAL PARTNERS LTD sold 20,333,000 shares of Ellah Lakes Plc between August 8 and 10, 2022."
+  },
+  {
+    "company_name": "Ellah Lakes Plc",
+    "rc_number": null,
+    "legal_entity_identifier": "7219037",
+    "insider_name": "CBO CAPITAL PARTNERS LTD",
+    "position_status": "Substantial Shareholder",
+    "insider_type": "Corporate",
+    "is_corporate_insider": true,
+    "transaction_type": "Sale of Shares",
+    "instrument": "Shares",
+    "price_per_share": [
+      3.58,
+      3.93,
+      4.3
+    ],
+    "volume": [
+      10000000,
+      333000,
+      10000000
+    ],
+    "aggregated_volume": "20333000",
+    "aggregated_price": "3.94",
+    "transaction_dates": [
+      "2022-08-08",
+      "2022-08-09",
+      "2022-08-10"
+    ],
+    "announcement_date": "2022-08-10",
+    "location": "Lagos",
+    "signatory_name": "Olumoroti Alli",
+    "signatory_designation": "COMPANY SECRETARY",
+    "year": "2022",
+    "month": "08",
+    "document_type": "insider_dealing_notification",
+    "pdf_source": "C:\\Users\\umair\\Desktop\\Financial Rag\\dataset\\Director_Dealings\\58_Ellah_Lakes_-_Notification_of_Insider_Dealing_(10_Aug_2022).pdf",
+    "summary": "CBO CAPITAL PARTNERS LTD, a substantial shareholder of Ellah Lakes Plc, sold a total of 20,333,000 shares across three transactions on August 8, 9, and 10, 2022. The shares were sold at prices of N3.58, N3.93, and N4.30 per share, respectively.",
+    "short_summary": "CBO CAPITAL PARTNERS LTD sold 20,333,000 shares of Ellah Lakes Plc between August 8 and 10, 2022."
+  },
+  {
+    "company_name": "Ellah Lakes Plc",
+    "rc_number": null,
+    "legal_entity_identifier": "7219037",
+    "insider_name": "Chuka Mordi",
+    "position_status": "CEO/ Executive Director",
+    "insider_type": "Individual",
+    "is_corporate_insider": false,
+    "transaction_type": "Sale of shares",
+    "instrument": "Equity",
+    "price_per_share": [
+      4.25
+    ],
+    "volume": [
+      14220000
+    ],
+    "aggregated_volume": "14220000",
+    "aggregated_price": "60435000",
+    "transaction_dates": [
+      "2020-09-15"
+    ],
+    "announcement_date": "2020-09-17",
+    "location": "Lagos",
+    "signatory_name": "Kenechi Ezezika",
+    "signatory_designation": "Company Secretary",
+    "year": "2020",
+    "month": "09",
+    "document_type": "insider_dealing_notification",
+    "pdf_source": "C:\\Users\\umair\\Desktop\\Financial Rag\\dataset\\Director_Dealings\\58_Ellah_Lakes_Plc_-_Notice_of_partial_sale_of_shares_of_CBO_Capital_Partners_Limited.pdf",
+    "summary": "Chuka Mordi, the CEO and Executive Director of Ellah Lakes Plc, sold 14,220,000 shares at a price of N 4.25 per share on 15 September 2020. The total value of the transaction amounted to N 60,435,000.",
+    "short_summary": "Chuka Mordi sold 14,220,000 shares of Ellah Lakes Plc for N 60,435,000."
+  },
+  {
+    "company_name": "Ellah Lakes Plc",
+    "rc_number": null,
+    "legal_entity_identifier": "7219037",
+    "insider_name": "Chuka Mordi",
+    "position_status": "CEO/ Executive Director",
+    "insider_type": "Individual",
+    "is_corporate_insider": false,
+    "transaction_type": "Sale of shares",
+    "instrument": "Equity",
+    "price_per_share": [
+      4.25
+    ],
+    "volume": [
+      14220000
+    ],
+    "aggregated_volume": "14220000",
+    "aggregated_price": "60435000",
+    "transaction_dates": [
+      "2020-09-15"
+    ],
+    "announcement_date": "2020-09-17",
+    "location": "Lagos",
+    "signatory_name": "Kenechi Ezezika",
+    "signatory_designation": "Company Secretary",
+    "year": "2020",
+    "month": "09",
+    "document_type": "insider_dealing_notification",
+    "pdf_source": "C:\\Users\\umair\\Desktop\\Financial Rag\\dataset\\Director_Dealings\\58_Ellah_Lakes_Plc_-_Notice_of_partial_sale_of_shares_of_CBO_Capital_Partners_Limited.pdf",
+    "summary": "Chuka Mordi, the CEO and Executive Director of Ellah Lakes Plc, sold 14,220,000 shares at a price of N 4.25 per share on 15 September 2020. The total value of the transaction amounted to N 60,435,000.",
+    "short_summary": "Chuka Mordi sold 14,220,000 shares of Ellah Lakes Plc for N 60,435,000."
+  },
+  {
+    "company_name": "Ellah Lakes Plc.",
+    "rc_number": null,
+    "legal_entity_identifier": "7219037",
+    "insider_name": "CBO Capital Partners Limited",
+    "position_status": "Shareholder",
+    "insider_type": "Corporate",
+    "is_corporate_insider": true,
+    "transaction_type": "Sale of shares",
+    "instrument": "Equity",
+    "price_per_share": [
+      3.48,
+      5.19,
+      4.25,
+      4.25
+    ],
+    "volume": [
+      5500,
+      4500,
+      10000,
+      6369
+    ],
+    "aggregated_volume": "26369",
+    "aggregated_price": "3.23",
+    "transaction_dates": [
+      "2021-01-19",
+      "2021-01-21",
+      "2021-01-22"
+    ],
+    "announcement_date": "2021-02-04",
+    "location": "Lagos",
+    "signatory_name": "Kenechi Ezezika",
+    "signatory_designation": "COMPANY SECRETARY",
+    "year": "2021",
+    "month": "02",
+    "document_type": "insider_dealing_notification",
+    "pdf_source": "C:\\Users\\umair\\Desktop\\Financial Rag\\dataset\\Director_Dealings\\58_Ellah_Lakes_Plc_-_Share_Dealing_Notification_(CBO_Capital).pdf",
+    "summary": "CBO Capital Partners Limited, a shareholder of Ellah Lakes Plc., sold a total of 26,369 shares across multiple transactions on January 19, 21, and 22, 2021. The shares were sold at prices ranging from N 3.48 to N 5.19 per share, with an aggregated price of N 3.23.",
+    "short_summary": "CBO Capital Partners Limited sold 26,369 shares of Ellah Lakes Plc. at an aggregated price of N 3.23."
+  },
+  {
+    "company_name": "Ellah Lakes Plc.",
+    "rc_number": null,
+    "legal_entity_identifier": "7219037",
+    "insider_name": "CBO Capital Partners Limited",
+    "position_status": "Shareholder",
+    "insider_type": "Corporate",
+    "is_corporate_insider": true,
+    "transaction_type": "Sale of shares",
+    "instrument": "Equity",
+    "price_per_share": [
+      3.48,
+      5.19,
+      4.25,
+      4.25
+    ],
+    "volume": [
+      5500,
+      4500,
+      10000,
+      6369
+    ],
+    "aggregated_volume": "26369",
+    "aggregated_price": "3.23",
+    "transaction_dates": [
+      "2021-01-19",
+      "2021-01-21",
+      "2021-01-22"
+    ],
+    "announcement_date": "2021-02-04",
+    "location": "Lagos",
+    "signatory_name": "Kenechi Ezezika",
+    "signatory_designation": "COMPANY SECRETARY",
+    "year": "2021",
+    "month": "02",
+    "document_type": "insider_dealing_notification",
+    "pdf_source": "C:\\Users\\umair\\Desktop\\Financial Rag\\dataset\\Director_Dealings\\58_Ellah_Lakes_Plc_-_Share_Dealing_Notification_(CBO_Capital).pdf",
+    "summary": "CBO Capital Partners Limited, a shareholder of Ellah Lakes Plc., sold a total of 26,369 shares across multiple transactions on January 19, 21, and 22, 2021. The shares were sold at prices ranging from N 3.48 to N 5.19 per share, with an aggregated price of N 3.23.",
+    "short_summary": "CBO Capital Partners Limited sold 26,369 shares of Ellah Lakes Plc. at an aggregated price of N 3.23."
+  },
+  {
+    "company_name": "Ellah Lakes Plc",
+    "rc_number": null,
+    "legal_entity_identifier": "7219037",
+    "insider_name": "CBO CAPITAL PARTNERS LTD",
+    "position_status": "Substantial Shareholder",
+    "insider_type": "Corporate",
+    "is_corporate_insider": true,
+    "transaction_type": "Sale of Shares",
+    "instrument": "Shares",
+    "price_per_share": [
+      4.25
+    ],
+    "volume": [
+      5000000
+    ],
+    "aggregated_volume": "5000000",
+    "aggregated_price": "N21250000.00",
+    "transaction_dates": [
+      "2021-08-30"
+    ],
+    "announcement_date": "2021-08-31",
+    "location": "Lagos",
+    "signatory_name": "Kenechi Ezezika",
+    "signatory_designation": "COMPANY SECRETARY",
+    "year": "2021",
+    "month": "08",
+    "document_type": "insider_dealing_notification",
+    "pdf_source": "C:\\Users\\umair\\Desktop\\Financial Rag\\dataset\\Director_Dealings\\58_Notification_of_Sale_of_Shares-CBO_Capital_(31_August).pdf",
+    "summary": "CBO CAPITAL PARTNERS LTD, a substantial shareholder of Ellah Lakes Plc, sold 5,000,000 shares at a price of N4.25 per share on 30 August 2021. The transaction was announced on 31 August 2021.",
+    "short_summary": "CBO CAPITAL PARTNERS LTD sold 5,000,000 shares of Ellah Lakes Plc at N4.25 per share."
+  },
+  {
+    "company_name": "Ellah Lakes Plc",
+    "rc_number": null,
+    "legal_entity_identifier": "7219037",
+    "insider_name": "CBO CAPITAL PARTNERS LTD",
+    "position_status": "Substantial Shareholder",
+    "insider_type": "Corporate",
+    "is_corporate_insider": true,
+    "transaction_type": "Sale of Shares",
+    "instrument": "Shares",
+    "price_per_share": [
+      4.25
+    ],
+    "volume": [
+      5000000
+    ],
+    "aggregated_volume": "5000000",
+    "aggregated_price": "N4.25",
+    "transaction_dates": [
+      "2021-08-30"
+    ],
+    "announcement_date": "2021-08-31",
+    "location": "Lagos",
+    "signatory_name": "Kenechi Ezezika",
+    "signatory_designation": "COMPANY SECRETARY",
+    "year": "2021",
+    "month": "08",
+    "document_type": "insider_dealing_notification",
+    "pdf_source": "C:\\Users\\umair\\Desktop\\Financial Rag\\dataset\\Director_Dealings\\58_Notification_of_Sale_of_Shares-CBO_Capital_(31_August).pdf",
+    "summary": "CBO CAPITAL PARTNERS LTD, a substantial shareholder of Ellah Lakes Plc, sold 5,000,000 shares at a price of N4.25 per share on 30 August 2021. The transaction was announced on 31 August 2021.",
+    "short_summary": "CBO CAPITAL PARTNERS LTD sold 5,000,000 shares of Ellah Lakes Plc at N4.25 per share."
+  }
+]

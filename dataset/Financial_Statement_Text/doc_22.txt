@@ -1,0 +1,426 @@
+          ELLAH LAKES PLC
+CONSOLIDATED UNAUDITED FINANCIAL STATEMENTS
+FOR THE NINE MONTHS ENDED
+30 April 2023
+ELLAH LAKES PLC
+CONTENTS
+Certification
+Consolidated Unaudited Statement of Financial Position
+Consolidated Unaudited Statement of Profit or Loss
+Consolidated Unaudited Statement of Changes in Equity
+Consolidated Unaudited Statement of Cash Flows
+Notes to the Consolidated Unaudited Financial Statements 
+PAGE
+2
+3
+4
+5
+6
+7
+1
+ELLAH LAKES PLC
+THIRD QUARTER FINANCIAL STATEMENTS CERTIFICATION UNDER SECTION 60 
+(2) OF THE INVESTMENT AND SECURITIES ACT (ISA), 2017
+a.
+b.
+We hereby certify that:
+The directors have reviewed the report:
+Based on the knowledge of the officers, the report does not contain:
+i.
+ii.
+c.
+d.
+e.
+f.
+i.
+ii.
+iii.
+iv.
+i.
+ii.
+Any untrue statement of a material fact, or
+Omit to state a material fact, which would make the statement misleading in the light of the
+circumstances under which such a statement was made:
+Based on the knowledge of such officers, the Group financial statement and other financial
+information included in the report fairly present in all material respects the financial
+condition and result of operations of the company and of the Group for the period
+presented in the report.
+The directors:
+Are responsible for establishing and maintaining internal controls,
+Have designed such internal controls to ensure that material information relating to the
+group is made known to such officers by others within the entity, particularly during the
+period in which the periodic reports are being prepared;
+Have evaluated the effectiveness of the Group's internal controls within 90 days prior to
+the report;
+Have presented in the report their conclusions about the effectiveness of their internal
+controls based on their evaluation as of that date;
+The directors have provided to the Auditors of the Group and the Audit Committee:
+All significant deficiencies in the design or operation of internal controls which would
+adversely affect the Group's ability to record, process, summarise and report financial data
+and have identified for the Group's Auditors any material weakness in internal controls, and
+Any fraud, whether material or not, that involves management or other employees who have
+significant role in the Group's internal controls;
+The directors have identified in the report whether or not there were significant changes in
+internal controls or other factors could significantly affect internal controls subsequent to
+the date of their evaluation, including any corrective actions with regard to significant
+deficiencies and material weakness.
+Certified by: 
+Mr. Chuka Mordi
+Chief Executive Officer
+FRC/2014/CIBN/00000005906
+Date:
+30/05/2023 
+Alice Willie
+Head of Accounts
+FRC/2022/PRO/ICAN/001/757545
+Date:
+30/05/2023 
+2
+Notes
+Third quarter to 
+30 April 2023
+31 July 2022 Audited
+₦'000 ₦'000
+Assets
+Non-Current assets
+Property, plant and equipment 3             22,636,526                  22,641,548 
+Biological assets 4                  178,505                       178,505 
+Goodwill 5                    57,689                         57,689 
+Other asset 6                  150,000                       150,000 
+             23,022,719                  23,027,742 
+Current assets
+Inventory 7                      4,075                           4,075 
+Receivables 8                    12,316                       237,793 
+Cash and cash equivalents 9                  232,858                         90,384 
+                  249,249                       332,252 
+Total assets             23,271,969                  23,359,993 
+Liabilities
+Current liabilities
+Trade and other payables 10               1,080,057                       593,310 
+Borrowings 12.1                     956,499                       956,499 
+Current tax payable 13.1                         570                              570 
+               2,037,126                    1,550,379 
+Non-current liabilities
+Payables to related parties 11 1,459,171                                  1,035,731 
+Borrowings 12.2   940,000                                        940,000 
+Deferred tax 13.2 518                                                      518 
+2,399,689                                  1,976,249 
+Total liabilities 4,436,815                                 3,526,629 
+Equity
+Share Capital 14 1,000,000               1,000,000                   
+Share premium 15 3,854,000               3,854,000                   
+Reserves 15 2,910,788              2,910,788                  
+Deposit For Shares-                         100,000                     
+Retained earnings/(loss) (3,857,423)             (2,959,212)                 
+Revaluation surplus 16 14,927,789            14,927,789                
+Total equity 18,835,154            19,833,364                
+Total liabilities and equity 23,271,969            23,359,993                
+Mr. Chuka Mordi Alice Willie
+Chief Executive Officer Head of Accounts
+FRC/2014/CIBN/00000005906 FRC/2022/PRO/ICAN/001/757545
+Date: Date:
+ELLAH LAKES PLC
+ CONSOLIDATED UNAUDITED STATEMENT OF FINANCIAL POSITION 
+AS AT 30 APRIL 2023
+These Group financial Statements were approved by the Board of Directors on May 25, 2023 and signed on 
+it behalf by:
+ 3
+ 30/05/2023 30/05/2023 
+Notes 3rd quarter to 
+30 April 2023
+3rd quarter to 30 
+April 2022
+Year to 30 April 
+2023
+Year to 30 April 
+2022
+₦'000 ₦'000 ₦'000 ₦'000
+Revenue 17      -                   140                      -                      140                        
+Cost of sales 18      -                   165                      -                      165                        
+Gross profit/(loss)-                   (25)                       -                      (25)                         
+Other income/(loss) 19      197                  250                      17,889                19,052                   
+Administrative expenses 20      (30,834)            (7,466)                 (28,223)               (58,834)                  
+Personnel expenses 21      (115,530)          (63,797)               (64,505)               (187,734)                
+Finance cost 22      (67,473)            (59,564)               (204,924)             (276,334)                
+Depreciation 3        (878)                 (1,055)                 (1,055)                 (3,165)                    
+(214,715)          (131,882)             (298,706)             (526,067)                
+Operating profit/(loss) (214,519)          (131,657)             (280,817)             (507,040)                
+Earnings per share (EPS) (0.11)                  (0.07)                      (0.04)                      (0.25)                         
+CONSOLIDATED UNAUDITED STATEMENT OF PROFIT OR LOSS AND OTHER COMPREHENSIVE INCOME 
+FOR THE THIRD QUARTER ENDED 30 APRIL 2023
+ELLAH LAKES PLC
+ 4
+Share Capital Share Premium Retained Earnings Other Equity 
+Reserve
+Revaluation Surplus
+Total 
+For the period ended 30 April 2023 ₦'000 ₦'000 ₦'000 ₦'000 ₦'000 ₦'000
+At 1 February 2022 1,000,000                      3,854,000             (2,959,212)             2,910,788               14,927,789               19,733,364                    
+Profit/(loss) for the period-                                 -                        (214,519)                -                          -                            (214,519)                        
+Adjustment to retained earning-                                 -                        (683,692)                -                          -                            (683,692)                        
+Other comprehensive income -                                 -                        -                         -                          -                            -                                 
+At 30 April 2023 1,000,000                      3,854,000             (3,857,423)             2,910,788               14,927,789               18,835,154                    
+For the period ended 30 April 2022
+At 1 February 2021 1,000,000                      3,854,000             (2,346,677)             2,910,788               1,327,789                 6,745,900                      
+Profit/(loss) for the period-                                 -                        (131,657)                -                          (131,657)                        
+Adjustment to retained earning-                                 -                        -                         -                          -                            
+Other comprehensive income -                                 -                        -                         -                          -                            -                                 
+At 30 April 2022 1,000,000                      3,854,000             (2,478,334)             2,910,788               1,327,789                 6,614,243                      
+ELLAH LAKES PLC
+ CONSOLIDATED UNAUDITED STATEMENT OF CHANGES IN EQUITY 
+FOR THE THIRD QUARTER ENDED 30 APRIL 2023
+ 5
+Year to                  
+30 April 2023
+Year to 30 April  
+2022
+₦'000 ₦'000
+Cashflows from operating activities
+Profit/(loss) before taxation              (507,040)            (523,958)
+Adjustment for:
+Retained earning              (683,692)            (156,997)
+Deposit for shares                         -               (100,000)
+Depreciation                   3,165                   1,487 
+           (1,187,567)            (779,468)
+Working capital:
+Changes in biological assets                         -                           -   
+Changes in receivables 225,477                               (7,191)
+Changes in payables 486,747                             381,173 
+                  712,224               373,983 
+Net cash from/(used in) operating activities              (475,343)            (405,486)
+Cash flows from investing activities:
+Purchase of property, plant and equipment                   (683)
+Proceeds on sales of Property, plant and 
+equipment                         -                           -   
+Net cash used in investing activities                         -                      (683)
+Cash flows from financing activities:
+Inflow from shares capital                         -                           -   
+Inflow from Revaluation Surplus                         -                           -   
+Share premium                        -   
+Change in Borrowings                         -                           -   
+Change in related parties loan               429,344               391,307 
+Net cash used in financing activities               429,344               391,307 
+Net increase/(decrease) in cash and cash 
+equivalents                (45,999)              (14,861)
+Cash and cash equivalents at beginning of the 
+period               278,857                 90,384 
+Cash and cash equivalents at end of the period 232,858               75,523               
+ELLAH LAKES PLC
+CONSOLIDATED UNAUDITED STATEMENT OF CASH FLOW 
+FOR THE THIRD QUARTER ENDED 30 APRIL 2023
+6
+1.   Reporting Entity
+3RD Quarter to 30 April 2023
+Land Office 
+Equipment Motor 
+Vehicles
+Farm 
+Worker's 
+Structure
+Total
+₦'000 ₦'000 ₦'000 ₦'000 ₦'000
+Cost:
+At 1 Febuary 2022 22,632,000             2,054             10,309        5,194          22,649,557
+Additions-                          -                 -              -              -                             
+Disposal-                              -                 -              -              -                             
+At 31 April 2023 22,632,000             2,054             10,309        5,194          22,649,557                
+Depreciation: 
+At 1 Febuary 2022-                          1,275             7,011          3,867          12,153                       
+Charge for the period-                              103                515             260             878                            
+On Disposal-                              -                    -                -                -                             
+At 31 April 2023-                          932                4,434          2,569          13,031                       
+Net Book Value at 30 April 
+2023 22,632,000             1,122             5,875          2,625          22,636,526                
+31 Jul 2022 Audited
+At 1 Aug 2021 9,032,000 1,372 10,309 5,194 9,048,874
+Additions 13,600,000-                 -              -              13,600,000
+Disposal-                          -                 -              -              -                             
+Revaluation surplus/(deficit)-                          -                 -              -              -                             
+At 31 Jul 2022 22,632,000 1,372 10,309 5,194 22,648,874
+Depreciation: 
+At 1 Aug 2021-                          585                1,577          946             3,108                         
+Charge for the period-                              343                2,577          1,298          4,218                         
+On Disposal-                              -                    -                -                -                             
+At 31 Jul 2022-                          928                4,154          2,244          7,326                         
+Net Book Value at 31 July 2022
+22,632,000             444                6,155          2,950          22,641,548                
+ii.ThecompanyrecentlyaccessedN940,000,000fromCentralBankofNigeriaundertheRealSectorSupportFund
+for oil palm plantation.
+3. Property, plant and equipment
+ELLAH LAKES PLC
+NOTES TO THE CONSOLIDATED UNAUDITED FINANCIAL STATEMENTS
+FOR THE NINE MONTHS ENDED 30 APRIL 2023
+EllahLakesPlcisapubliclimitedcompanyincorporatedon22August1980withCorporateAffairsCommissionas
+aprivatelimitedliabilitycompanywithregistrationnumberRC299748.Itwasconvertedtopubliclimitedcompany
+on 16 June 1992. Its registered office is situated at 12 Ihama Street, GRA Benin City, Edo State.
+2.    Recent Event in the Company
+i.Thecompanyrecentlyacquired 80%of thevalueofELPSunshineLimited.Theremining20%isownedby
+Ondo State Government. The company has 5,000 hectares of land in Ondo State.
+7
+4 Biological Assets
+3rd Quarter to 30 April 2023 Palm Plantations Cassava Total
+₦'000 ₦'000 ₦'000
+Cost:
+Balance at 1 Feb 2023 178,505                -                    178,505                
+Additions-                        -                    -                       
+Disposal-                        -                    -                       
+Balance at 30 April 2023 178,505                -                    178,505                
+Amortisation/depreciation:
+Balance brought forward-                        -                    -                       
+Charge for the period-                        -                    -                       
+on disposal-                        -                    -                       
+Balance carried forward-                        -                    -                       
+Carrying Cost at 30 April 2023 178,505                -                    178,505                
+31 Jul 2022 Audited
+Cost:
+Balance 1 August 2021 296,018                818                    296,836                
+Additions-                        -                    -                       
+Impairment (117,513)               (818)                  (118,331)              
+Balance 31 Jul 2022 178,505                -                    178,505                
+Amortisation/depreciation:
+Balance brought forward-                        -                    -                       
+Charge for the period-                        -                    -                       
+on disposal-                        -                    -                       
+Balance carried forward-                        -                    -                       
+Carrying Cost at 31 July 2022 178,505                -                    178,505                
+3rd quarter to 30 
+April 2023
+31 Jul 2022 
+Audited
+₦'000 ₦'000
+5 Goodwill
+Goodwill on acquisition 57,689                  57,689               
+57,689                  57,689               
+6 Other assets
+Others 150,000                150,000             
+150,000                150,000             
+7 Inventory
+Palm oil seedlings 4,075                    4,075                 
+4,075                    4,075                 
+  8
+3rd quarter to 30 
+April 2023
+31 July 2022 Audited
+₦'000 ₦'000
+8 Receivables
+Prepaid rent 1,318                         3,171                            
+Prepaid loan-232,622                        
+Others 2,000                         2,000                            
+Prepaid for seedling 8,986                         -                               
+Prepaid fueling 12                              -                               
+12,316                       237,793                        
+9 Cash and cash equivalents
+Cash at Bank (Naira Account) 191-                            90,138                          
+Cash at Bank (Dom Accounts)    i 338                            244                               
+Cash in hand 90                              2                                  
+Restricted Cash (ii) 232,622                     -                               
+232,858                     90,384                          
+i.   The Balances in Dom Accounts were valued at the ruling rate
+ii.  Prepaid Loan has been reclassified to cash and cash equivalent as Restricted cash
+10 Payables
+Trade payable 34,229                       66,826                          
+Salary payable               (i) 737,834                     291,352                        
+WHT Payable 21,142                       13,165                          
+PAYE Payable 198,104                     94,940                          
+Other Current Liabilities 88,749                       127,027                        
+1,080,057                  593,310                        
+10.i
+11 Related Parties Liabilities
+CBO Capital Partners Ltd. 308,922                     305,032                        
+Directors 101,927                     23,583                          
+SPUD Consultancy and Services Limited 767,056                     677,239                        
+Directors - PF 106,400                     -                               
+Others 174,865                     29,877                          
+1,459,171                  1,035,731                     
+12 Term Loans
+Current (Note 12.1) 956,499                     956,499                        
+Non-current (Note 12.2) 940,000                     940,000                        
+1,896,499                  1,896,499                       
+12.1 Current 
+Unsecured borrowing:
+MBC Capital 956,499                     956,499                        
+956,499                     956,499                        
+Secured borrowing:
+Accured interest-                             -                               
+ 956,499                     956,499                        
+12.2 Non-Current
+Secured Borrowing: 940,000                     940,000                        
+CBN/FCMB 940,000                     940,000                        
+The Management has proposed that portion of their Salary Payable be converted to Equity Shares
+  9
+3rd quarter to 30 
+April 2023
+31 July 2022 
+Audited
+₦'000 ₦'000
+13 Taxation
+Current tax  (13.1)-                            -                      
+Deferred tax (13.2) -                            518                     -                            518                     
+13.1 Current tax payable
+At 1 August 570                           570                     
+Tax for the period:
+Income tax -                            -                      
+Education tax -                            -                      
+Payment-                            -                      
+570                           570                     
+13.2 Deferred tax 
+At 1 August 518 990                     
+Arising/(reversing) during the period-                            472-                     
+At 31 July 518                           518
+14 Issued and fully paid:
+2,000,000,000 ordinary shares@ ₦0.50 each 1,000,000 1,000,000
+ 15 Reserves
+Share premium reserves                  3,854,000 3,854,000           
+Other reserves 2,910,788                 2,910,788           
+Deposit for shares-                            100,000              
+6,764,788                 6,864,788           
+16 Revaluation
+Net land revaluation 14,927,789               14,927,789         
+14,927,789               14,927,789         
+10
+3rd quarter to 30 
+April 2023
+3rd quarter to 30 
+April 2022
+₦'000 ₦'000
+17 Revenue
+Sales-                                       140                           -                                  140                              
+18 Cost of sales
+Goods-                              165                           -                              165                           
+19 Other income
+Gain on foreign exchange 197                              250                           
+Refund of expenses-                              -                               
+197                              250                           
+20 Administrative expenses
+Bank charges 66                                18                            
+Professional and legal fees 5,067                           3,592                        
+Telecommunication and postage 37                            
+Maintenance costs 946                              435                           
+Printing and stationeries 363                              -                           
+Travels and hotel accommodation 3,275                           1,893                        
+IT and internet 38                                
+Medicals-                              -                           
+Meetings and Entertainment 206                              139                           
+Regulatory fees 5,451                           -                           
+Advertisement 10,025                         -                           
+Rents 395                              131                           
+Security 1,847                           835                           
+Impairement of biological assets-                              385                           
+Other expenses 3,154                           -                           
+30,834                         7,465                        
+21 Personnel Expenses
+Salaries and wages 115,530                       63,767                      
+Staff welfare-                              30                            
+115,530                       63,797                      
+22 Finance costs
+Interests 67,473                         59,564                      
+67,473                         59,564                      
+11
+23 Securities Trading Policy
+In compliance with Rule 17.15 Disclosure of Dealings in Issuers’ Shares, Rulebook of the
+Exchange 2015 (Issuers Rule), Ellah Lakes Plc (the Company) is currently updating and
+finalizing its Securities Trading Policy as mandated by the Issuers Rule. The Policy when it
+becomes effective, applies to all Directors, Audit Committee, employees of the Company and
+any other person in possession of insider information from dealing in the Company’s shares
+during the Non-Authorized Trading Period, in accordance with the Investment and Security
+Act, 2007 and the Post Listing Rules of The Nigerian Stock Exchange.

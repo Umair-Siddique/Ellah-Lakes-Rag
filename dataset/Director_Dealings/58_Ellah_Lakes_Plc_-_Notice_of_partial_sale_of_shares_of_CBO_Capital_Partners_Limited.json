@@ -1,0 +1,32 @@
+{
+  "company_name": "Ellah Lakes Plc",
+  "rc_number": null,
+  "legal_entity_identifier": "7219037",
+  "insider_name": "Chuka Mordi",
+  "position_status": "CEO/ Executive Director",
+  "insider_type": "Individual",
+  "is_corporate_insider": false,
+  "transaction_type": "Sale of shares",
+  "instrument": "Equity",
+  "price_per_share": [
+    4.25
+  ],
+  "volume": [
+    14220000
+  ],
+  "aggregated_volume": "14220000",
+  "aggregated_price": "60435000",
+  "transaction_dates": [
+    "2020-09-15"
+  ],
+  "announcement_date": "2020-09-17",
+  "location": "Lagos",
+  "signatory_name": "Kenechi Ezezika",
+  "signatory_designation": "Company Secretary",
+  "year": "2020",
+  "month": "09",
+  "document_type": "insider_dealing_notification",
+  "pdf_source": "C:\\Users\\umair\\Desktop\\Financial Rag\\dataset\\Director_Dealings\\58_Ellah_Lakes_Plc_-_Notice_of_partial_sale_of_shares_of_CBO_Capital_Partners_Limited.pdf",
+  "summary": "Chuka Mordi, the CEO and Executive Director of Ellah Lakes Plc, sold 14,220,000 shares at a price of N 4.25 per share on 15 September 2020. The total value of the transaction amounted to N 60,435,000.",
+  "short_summary": "Chuka Mordi sold 14,220,000 shares of Ellah Lakes Plc for N 60,435,000."
+}

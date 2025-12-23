@@ -1,0 +1,469 @@
+ELLAH LAKES PLC
+CONSOLIDATED UNAUDITED FINANCIAL STATEMENTS
+FOR THE NINE MONTHS ENDED
+30 APRIL 2021
+ELLAH LAKES PLC
+PAGE
+CONTENTS
+Certification
+Consolidated Unaudited Statement of Financial Position
+Consolidated Unaudited Statement of Profit or Loss
+Consolidated Unaudited Statement of Changes in Equity
+Consolidated Unaudited Statement of Cash Flows
+Notes to the Consolidated Unaudited Financial Statements 
+Shareholding pattern
+2
+3
+4
+5
+6
+7
+11
+1
+ELLAH LAKES PLC
+FOURTH QUARTER FINANCIAL STATEMENTS CERTIFICATION UNDER 
+SECTION 60 (2) OF THE INVESTMENT AND SECURITIES ACT (ISA), 2017
+a.
+b.
+i.
+We hereby certify that:
+The directors have reviewed the report:
+Based on the knowledge of the officers, the report does not contain:
+Any untrue statement of a material fact, or
+ii.
+c.
+d.
+Omit to state a material fact, which would make the statement misleading in the light of the 
+circumstances under which such a statement was made:
+Based on the knowledge of such officers, the Group financial statement and other financial 
+information included in the report fairly present in all material respects the financial 
+condition and result of operations of the company and of the Group  for the period 
+presented in the report.
+The directors:
+i. Are responsible for establishing and maintaining internal controls,
+ii.
+iii
+iii.
+iv.
+e.
+f.
+i.
+ii.
+l
+Have designed such internal controls to ensure that material information relating to the 
+group  is made known to such officers by others within the entity, particularly during the 
+period in which the periodic reports are being prepared;
+H
+t d th ff ti
+f th G ' i t l t l ithi 90 d i t
+Have evaluated the effectiveness of the Group's internal controls within 90   days prior to 
+the report;
+Have presented in the report their conclusions about the effectiveness of their internal 
+controls based on their evaluation as of that date;
+The directors have provided to the Auditors of the Group and the Audit Committee:
+All significant deficiencies in the design or operation of internal controls which would 
+adversely affect the Group's ability to record, process, summarise and report financial data 
+and have identified for the Group's Auditors any material weakness in internal controls, 
+d
+Any fraud, whether material or not, that involves management or other employees who 
+have significant role in the Group's internal controls;
+The directors have identified in the report whether or not there were significant changes in 
+internal controls or other factors could significantly affect internal controls subsequent to 
+the date of their evaluation, including any corrective actions with regard to significant 
+deficiencies and material weakness.
+Certified by: 
+Mr. Chuka Mordi
+Managing Director
+FRC/2014/CIBN/00000005906
+Date:
+10th May, 2021
+Mrs. Oluwabusayo Iretioluwa Awoyo
+Head of Finance
+FRC/2020/001/00000020917
+Date:
+10th May, 2021
+2
+2
+Notes
+As at 30 April 2021 31 July 2020 
+Audited
+₦'000 ₦'000
+Assets
+Non-Current assets
+Property, plant and equipment 3 5,492,782                                             5,484,508       
+Biological assets 4 84,528                                                  84,528            
+Other Non Current Asset 5 474,000                                                -                  
+Goodwill 6 57,689                                                  57,689            
+6,108,999                                             5,626,725       
+Current assets
+Inventory 7-                                                       -                  
+Receivables 8 4,086                                                    4,061              
+Prepayment 9 4,550                                                    -                  
+Cash and cash equivalents 10 23,599                                                  93                   
+32,235                                                  4,154              
+Total assets 6,141,234                                             5,630,878       
+Liabilities
+Current liabilities
+Trade and other payables 11 434,979                                                406,079          
+Current tax payable 570                                                       570                 
+435,550                                                406,650          
+Non-current liabilities
+Payables to related parties 12 305,032                                                334,167          
+Borrowings 13 1,635,055                                             733,555          
+Deferred tax 500                                                       500                 
+1,940,587                                             1,068,222       
+Total liabilities 2,376,137                                             1,474,872       
+Equity
+Share Capital 14 1,000,000                                             1,000,000       
+Reserves 15 4,564,788                                             4,564,788       
+Retained earnings/(loss) (1,799,691)                                           (1,408,781)      
+Total equity 3,765,097                                             4,156,007       
+Total liabilities and equity 6,141,234                                             5,630,878       
+Mr. Chuka Mordi Ms. Osaro Oyegun Mrs. Oluwabusayo Iretioluwa Awoyo
+Managing Director Director Head of Finance
+FRC/2014/CIBN/00000005906 FRC/2020/003/ 00000022066 FRC/2020/001/00000020917
+Date: 10th May, 2021 Date: 10th May, 2021 Date: 10th May, 2021
+These Group financial Statements were approved by the Board of Directors on 10th May, 2021 and signed on it 
+behalf by:
+ELLAH LAKES PLC
+ CONSOLIDATED UNAUDITED STATEMENT OF FINANCIAL POSITION 
+AS AT 30 APRIL 2021
+ 3
+Notes 3rd quarter to 
+30 April 2021
+Year to 30 
+April 2021
+3rd quarter to 30 
+April 2020
+Year to 30 April 
+2020
+₦'000 ₦'000 ₦'000 ₦'000
+Revenue 16    -                     -                  -                        -                        
+Cost of sales 17    -                     -                  -                        -                        
+Gross profit/(loss)-                     -                  -                        -                        
+Other income/(loss) 18    0                         1                     33                         4,097                    
+Administrative expenses 19    (119,336)           (163,018)        (1,084)                  (12,238)                 
+Personnel expenses 20    (56,195)              (134,236)        (23,513)                (91,753)                 
+Operating Expenses 21    (51,163)              (92,280)          
+Depreciation 3       (554)                   (1,302)            (208)                     (614)                      
+Amortisation 4       -                     -                  -                        -                        
+(227,248)           (390,836)        (24,806)                (104,605)               
+Operating profit/(loss) (227,248)           (390,835)        (24,773)                (100,508)              
+Earnings per share (EPS) (0.11)                    (0.20)                (0.02)                      (0.10)                       
+  
+ELLAH LAKES PLC
+ CONSOLIDATED UNAUDITED STATEMENT OF PROFIT OR LOSS AND OTHER COMPREHENSIVE INCOME 
+FOR THE 3RD QUARTER ENDED 30 APRIL 2021
+ 4
+Share capital Retained 
+earnings
+Other 
+Equity Total 
+For the period ended 30 April 2021 ₦'000 ₦'000 ₦'000 ₦'000
+At 1 August 2020 1,000,000      (1,408,781)        4,564,788     4,156,007            
+Adjustment-                (75)                    -               (75)                      
+Profit/(loss) for the period-                (390,835)           -              (390,835)           
+Other comprehensive income -                -                    -              -                    
+At 30 April 2021 1,000,000    (1,799,691)       4,564,788  3,765,097                              -  
+For the period ended 30 April 2020
+At 1 August 2019 1,000,000      (1,104,748)        4,564,788    4,460,040          
+Profit/(loss) for the period-                (100,508)           -             (100,508)           
+Other comprehensive income -                -                    -             -                    
+At 30 April 2020 1,000,000    (1,205,256)       4,564,788 4,359,532        
+ELLAH LAKES PLC
+ CONSOLIDATED UNAUDITED STATEMENT OF CHANGES IN EQUITY
+FOR THE 3RD QUARTER ENDED 30 APRIL 2021
+ 5
+ELLAH LAKES PLC
+CONSOLIDATED UNAUDITED STATEMENT OF CASH FLOW 
+FOR THE 3RD QUARTER ENDED 30 APRIL 2021
+Year to           
+30 April 2021
+₦'000
+Cashflows from operating activities
+Profit/(loss) before taxation
+Adjustment for:
+Retained Earnings
+Depreciation
+Working capital:
+Changes in biological assets
+Changes in financial instrument
+Changes in inventories
+Changes in prepayment
+Changes in receivables
+Changes in payables
+Net cash from/(used in) operating 
+activities
+Cash flows from investing activities:
+Purchase of property, plant and 
+Net cash used in investing activities
+                 (390,835)        
+                          (75)
+                      1,302                        
+                (389,608)
+                            -      
+(474,000)
+                            -            
+(4,550)
+(25)
+28,900
+                 (449,675)
+                 (839,282)
+                    (9,576)    
+                     (9,576)
+Year to          
+31 April 2020
+₦'000
+      (100,508)
+614 
+               (99,893)
+                       -   
+                          -   
+           1,723 
+                     (250)
+                  85,527 
+                  87,000 
+                (12,894)
+                (123)
+                     (123)
+Cash flows from financing activities:
+Inflow from shares capital
+Borrowings
+Change in related parties loan
+Net cash used in financing activities
+Net increase/(decrease) in cash and cash 
+equivalents
+Cash and cash equivalents at beginning 
+of the period
+Cash and cash equivalents at end of 
+the period
+                            -        
+                  901,500 
+                   (29,135)      
+                  872,365 
+                    23,506 
+                           93                     
+23,599
+                     -   
+                         (0)
+              9,890 
+                    9,890 
+                  (3,127)
+3,350 
+223 
+6
+1.   Reporting Entity
+3rd Quarter to 30 April 2021
+Land Office 
+Equipment Motor 
+Vehicles
+Farm 
+Worker's 
+Structure
+Total
+₦'000 ₦'000 ₦'000 ₦'000 ₦'000
+Cost:
+At 1 February 2021 5,482,211      1,156             2,499          5,194          5,491,059        
+Additions-                 -                 4,100          -              4,100               
+Disposal‐                  -                 -              -              -                   
+At 30 April 2021 5,482,211      1,156             6,599          5,194          5,495,159        
+Depreciation: 
+At 1 February 2021-                 434                1,093          296             1,823               
+Charge for the period‐                  73                  156             325             554                  
+On Disposal‐                  ‐                 ‐             ‐             -                   
+At 30 April 2021-                 507                1,250          620             2,377               
+Net Book Value at 30 April 
+2021 5,482,211      648                5,350          4,573          5,492,782        
+31 July 2020 Audited
+At 1 August 2019 5,482,211      750                2,499          -              5,485,460        
+Additions-                 123                -              -              123                  
+Disposal-                 -                 -              -              -                   
+At 31 July 2020 5,482,211      873                2,499          -              5,485,583        
+Depreciation: 
+At 1 August 2019-                 94                  156             -              250                  
+Charge for the period‐                  200                625             -              825                  
+On Disposal‐                  ‐                 ‐             ‐             -                   
+At 31 July 2020-                 294                781             1,075               
+Net Book Value at 31 July 2020
+5,482,211      579                1,718          -              5,484,508        
+Efforts are being made to diversify the operations of the company in the shortest possible time. 
+3. Property, plant and equipment
+2.    Recent Event in the Company
+ELLAH LAKES PLC
+FOR THE SIX MONTHS ENDED 30 APRIL 2021
+NOTES TO THE CONSOLIDATED UNAUDITED FINANCIAL STATEMENTS
+Ellah Lakes Plc is a public limited company incorporated on 22 August 1980 with Corporate Affairs 
+Commission as a private limited liability company with registration number RC 299748. It was converted 
+to public limited company on 16 June 1992. Its registered office is situated at 12 Ihama Street, GRA 
+Benin City, Edo State.
+The company recently purchased 100% holding in Telluria Limited, a company that engages in 
+agricultural production at its 2,400 hectares of land in Edo State through a business combination 
+arrangement. The company has been preparing its consolidated financial statements since the time of 
+acquisition. This is the first fourth quarter consolidated unaudited financial statements
+7
+4 Biological assets
+3rd Quarter to 30 April 2021 Palm Plantations Brood Stock Total
+₦'000 ₦'000 ₦'000
+Cost:
+Balance at 1 February 2021 125,646                                -                  125,646  
+Additions-                                        -                  -          
+Derecognition of expense posted (41,118)                                 -                  -          
+Balance at 30 April 2021 84,528                                  -                  125,646  
+Amortisation/depreciation:
+Balance brought forward-                                        -                  -          
+Charge for the period-                                        -                  -          
+on disposal-                                        -                  -          
+Balance carried forward-                                        -                  -          
+Carrying Cost at 30 April 2021 84,528                                     -                    125,646  
+31 July 2020 Audited
+Cost:
+Balance 1 August 2019 66,123                                  -                  66,123    
+Additions 20,558                                  -                  20,558    
+Disposal (2,153)                                  -                  (2,153)     
+Balance 31 July 2020 84,528                                  -                  84,528    
+Amortisation/depreciation:
+Balance brought forward-                                        -                  -          
+Charge for the period-                                        -                  -          
+on disposal-                                        -                  -          
+Balance carried forward-                                        -                  -          
+Carrying Cost at 31 July 2020 84,528                                  -                  84,528    
+5 Other Non-current Asset
+Financial Instrument Equity contributi 474000-474,000                                -                  
+3rd quarter to 30 April 
+2021
+31 July 2020 
+Audited
+₦'000 ₦'000
+6 Goodwill
+Goodwill on acquisition 57,689                                  57,689            
+57,689                                  57,689            
+7 Inventory
+Raw materials-                                        -                  -                                        -                  
+  8
+3rd quarter to 30 
+April 2021
+31 July 2020 
+Audited
+₦'000 ₦'000
+8 Receivables
+Related party receivable 2,061                       2,061                   
+Others 2,025                       2,000                   
+4,086                       4,061                   
+9 Prepayment
+Prepaid rent 4,550                       -                      
+4,550                       -                      
+10 Cash and cash equivalents
+Cash at bank 23,472                     83                       
+Cash in hand 127                          9                         
+23,599                     93                       
+11 Trade and Other Payables
+Over draft(Bank Charges 0                                           -                      
+Trade payable 41,373                     23,301                 
+Salary payable 165,279                    134,954               
+Other liabilities 228,327                    247,824               
+434,979                    406,079               
+12 Payables to Related Parties
+CBO Capital Partners Ltd. 305,032                    305,032               
+Directors-                          29,135                 
+305,032                    334,167               
+13 Borrowings
+Term Loan 733,555                    733,555                
+Other Borrowimgs 901,500                    
+1,635,055                 733,555               
+14 Authorized:
+3,000,000,000 ordinary shares@ 
+₦ 0.50 each 1,500,000 1,500,000
+Issued and fully paid:
+2,200,000,000 ordinary shares@ 
+₦0.50 each 1,000,000 1,000,000
+15 Reserves
+Share premium reserves                 3,854,000 3,854,000             
+Other reserves 710,788                    710,788               
+4,564,788                 4,564,788             
+  9
+3rd quarter to 30 
+April 2021
+3rd quarter to 30 
+April 2020
+₦'000 ₦'000
+16 Revenue
+Sales‐                               -                         -                            -                            
+17 Cost of sales
+Goods-                         -                         -                         -                         
+18 Other income
+Gain on foreign exchange 0                            33                          
+Others-                         -                         
+0                            33                          
+19 Administrative expenses
+Bank charges 504                        13                          
+Finance charges 48,895                   
+Professional, legal and consultancyfee 47,690                   100                        
+Telecommunication 8,625                     63                          
+Printing and stationeries 238                        103                        
+Dues and subscriptions 1,587                     78                          
+Hotel and Accomodation 3,752                     
+Travel 4,926                     461                        
+Entertainment 335                        170                        
+Other expenses 2,785                     97                          
+119,336                 1,084                     
+20 Personnel Expenses
+Director's Expense 1,950                     0
+Salaries and wages 52,245                   23,513                   
+Staff Welfare 2,000                     0
+56,195                   23,513                   
+21 Operating Expenses
+Farm expenses 51,163                   -                         
+51,163                   -                         
+22 Securities Trading Policy
+The Company has complied with the provisions as stated in Rule 17.15 Disclosure of 
+Dealings in Issuers’ shares, Rulebook of the Exchange 2015 (Issuers Rule)
+Director Shareholders
+30/04/2021 31/07/2020
+Name of Director Direct Indirect Direct Indirect
+1Enotie Ogbebor 376,000,000 376,000,000
+2Osaro Oyegun 94,000,000 94,000,000
+3Francis Chukwuka Mordi* 564,000,000 564,000,000.00    
+*Represents CBO Capital 
+Partners Limited
+Name Holding % Holding
+1CBO Capital Partners Limited 564,000,000 28.20
+2Enotie Ogbebor 376,000,000 18.80
+3Blackman & Co. Limited 338,400,000 16.92
+4Lake- Oko Farm Limited 188,000,000 9.40
+No other individual(s) asides from those above holds 5% and above of the issued and fully paid shares of the Co
+Other Influential Shareholdings
+S/N Name of Shareholders Ordinary shares (Unit@5kobo each)
+1 CBO Capital Partners Limited 564,000,000.00  
+2 Enotie Ogbebor 376,000,000.00  
+3 Blackman & Co Limited 338,400,000.00  
+4 Lake-Oko Farm Limited 188,000,000.00  
+5 Osaro Oyegun 94,000,000.00    
+6 Creekside Equity Investors Limit 92,120,000.00    
+7 Chief J. W Ellah Sons & Co Lim 59,390,522.00    
+8 Brawny Foods and Farms Limite 47,000,000.00    
+9 Securtype Investment Limited 39,480,000.00    
+10 Usiholo Anenih 37,600,000.00    
+11 Iginla Limited 32,900,000.00    
+12 UBAPC/Trsut Fund Pension Plc-25,000,000.00    
+13 Isioma Coker 18,800,000.00    
+14 J.O. Omogiate Limited 18,800,000.00    
+15 Bolaji Ogundare 18,800,000.00    
+16 Rims Merchant Bank Limited 15,168,000.00    
+17 Rivers state Ministry of Finance I 11,450,000.00    
+18 Esohe Joan Eigbike 4,700,000.00      
+19 Edward Osayande 4,700,000.00      
+20 Giles Omezi 4,700,000.00      
+21 Others 8,991,478.00      
+11
+ELLAH LAKES PLC
+Substantial Shareholders
+The following shareholders held 5% and above of the issued share capital of the 
+company as at 30th April 2021:
+The Company’s free float is in compliance with The 
+Exchange’s free float requirements for the Board on which they are listed as at 
+30 April 2021. This is in line with the provisions Rule 2.2 of the Rules 
+Governing Free Float Requirements which states that “Each Issuer shall 
+incorporate in its half-year financial statement filed with The Exchange its 
+shareholding pattern, and also indicate whether or not its free float is in 
+compliance with The Exchange’s free float requirements for the Board on which 
+it is listed”.
