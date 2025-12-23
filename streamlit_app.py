@@ -10,10 +10,8 @@ ROOT_DIR = Path(__file__).resolve().parent
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
-from retriever.common_retriever import search_and_generate
-from csv_agent.csv_common_retriever import (
-    query_common_with_source as query_csv_router,
-)
+from retriever.common_retriever import search_and_generate_with_tools
+from csv_agent.csv_common_retriever import query_with_tools as query_csv_router
 
 
 def _init_state() -> None:
@@ -50,18 +48,28 @@ if prompt:
             with st.spinner("Retrieving + reranking + generating…"):
                 try:
                     last_messages = st.session_state.messages[-5:] if len(st.session_state.messages) > 0 else []
-                    result = search_and_generate(
+                    
+                    # Use tool calling for intelligent routing
+                    result = search_and_generate_with_tools(
                         query=prompt,
                         top_k=10,
                         rerank_top_n=5,
                         chat_history=last_messages
                     )
+                    
                 except Exception as exc:
                     st.error(f"Retriever error: {exc}")
                     st.stop()
 
             category = result.get("category", "unknown")
-            st.markdown(f"Retrieving from namespace: `{category}`")
+            
+            # Show which tool was used
+            if result.get("tool_calls"):
+                tool_info = result["tool_calls"][0]
+                tool_name = tool_info['tool'].replace('_tool', '').replace('_', ' ').title()
+                st.caption(f"🔧 Tool: `{tool_name}`")
+            
+            st.markdown(f"Namespace: `{category}`")
 
             response_stream = result.get("response_stream")
             placeholder = st.empty()
@@ -83,21 +91,27 @@ if prompt:
             final_response = full_response
 
         else:
-            # CSV router path
-            with st.spinner("Routing to CSV retriever…"):
+            # CSV router path - uses tool calling
+            with st.spinner("Querying CSV data…"):
                 try:
                     answer, source_tag = query_csv_router(prompt)
                 except Exception as exc:
                     st.error(f"CSV retriever error: {exc}")
                     st.stop()
 
-            # Map source tag to friendly label
-            source_label = (
-                "Monetary aggregates CSV (1960–1980)"
-                if source_tag == "monetary"
-                else "GDP-by-sector CSV (1960+)"
-            )
-            st.markdown(f"Retrieving from: `{source_label}`")
+            # Map source tag to friendly label and tool name
+            if source_tag == "monetary":
+                source_label = "Monetary Aggregates (1960–1980)"
+                tool_name = "Query Monetary Aggregates Tool"
+            elif source_tag == "gdp":
+                source_label = "GDP By Sector (1960+)"
+                tool_name = "Query Gdp By Sector Tool"
+            else:
+                source_label = "CSV Data"
+                tool_name = "Unknown Tool"
+            
+            st.caption(f"🔧 Tool: `{tool_name}`")
+            st.markdown(f"Dataset: `{source_label}`")
 
             # Stream the final answer by chunks to mimic streaming.
             placeholder = st.empty()
@@ -111,6 +125,6 @@ if prompt:
     st.session_state.messages.append(
         {
             "role": "assistant",
-            "content": f"Retrieving from: `{final_category}`\n\n{final_response}",
+            "content": f"{final_response}",
         }
     )

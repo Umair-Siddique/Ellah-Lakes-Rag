@@ -10,6 +10,7 @@ Pillow
 cryptography
 cohere>=5.12.0
 langchain
+langchain-core
 langchain-cohere
 langchain-community
 streamlit

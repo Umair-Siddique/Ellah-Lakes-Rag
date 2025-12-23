@@ -128,7 +128,81 @@ def query_common(question: str, **engine_kwargs) -> str:
     return answer
 
 
-__all__ = ["query_common", "query_common_with_source"]
+def query_with_tools(question: str) -> tuple[str, str]:
+    """
+    Use LangChain tool calling to route the question to the appropriate CSV.
+    
+    Args:
+        question: User's natural language question
+    
+    Returns:
+        Tuple of (answer, source_tag) where source_tag is "monetary" or "gdp"
+    """
+    from csv_agent.csv_tools import get_csv_tool_definitions, execute_csv_tool
+    from openai import OpenAI
+    import json
+    
+    if not Config.OPENAI_API_KEY:
+        raise RuntimeError("OPENAI_API_KEY is missing; set it in your .env file.")
+    
+    client = OpenAI(api_key=Config.OPENAI_API_KEY)
+    
+    # Get tool definitions
+    tools = get_csv_tool_definitions()
+    
+    # Call LLM with tools
+    messages = [
+        {
+            "role": "system",
+            "content": "You are a data analysis assistant. Use the appropriate CSV query tool to answer the user's question based on the type of data they're asking about."
+        },
+        {
+            "role": "user",
+            "content": question
+        }
+    ]
+    
+    try:
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=messages,
+            tools=tools,
+            tool_choice="auto",
+            temperature=0,
+        )
+        
+        message = response.choices[0].message
+        
+        # Check if tools were called
+        if not message.tool_calls:
+            # No tool called, use fallback classification
+            return query_common_with_source(question)
+        
+        # Execute the first tool call
+        tool_call = message.tool_calls[0]
+        tool_name = tool_call.function.name
+        tool_args = json.loads(tool_call.function.arguments)
+        
+        # Execute the tool
+        answer = execute_csv_tool(tool_name, tool_args)
+        
+        # Determine source tag from tool name
+        if "monetary" in tool_name:
+            source_tag = "monetary"
+        elif "gdp" in tool_name:
+            source_tag = "gdp"
+        else:
+            source_tag = "unknown"
+        
+        return answer, source_tag
+        
+    except Exception as e:
+        # Fallback to rule-based classification on error
+        print(f"Tool calling failed: {e}. Using fallback classification.")
+        return query_common_with_source(question)
+
+
+__all__ = ["query_common", "query_common_with_source", "query_with_tools"]
 
 
 if __name__ == "__main__":

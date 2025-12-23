@@ -1,2 +1,5 @@
 .env
 dataset/
+processed/
+processed_data/
+csv_agent/dataset/

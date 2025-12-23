@@ -578,6 +578,222 @@ def search_and_generate(
     }
 
 
+def search_with_tools(
+    query: str,
+    top_k: int = 10,
+    tool_model: str = "gpt-4o-mini",
+) -> Dict[str, Any]:
+    """
+    Search using LangChain tool calling - LLM decides which namespace to query.
+    
+    This is an alternative to classification-based routing. The LLM is given tools
+    for each namespace and decides which one(s) to call based on the query.
+    
+    Args:
+        query: Natural language search query
+        top_k: Number of results to return from tool search
+        tool_model: LLM model for tool calling (default: gpt-4o-mini)
+    
+    Returns:
+        Dictionary with:
+        - category: The namespace that was searched
+        - results: List of search results
+        - formatted_results: List of formatted result strings
+        - tool_calls: Information about which tools were called
+    """
+    from retriever.tools import get_tool_definitions, execute_tool
+    
+    if not Config.OPENAI_API_KEY:
+        raise RuntimeError("OPENAI_API_KEY is missing; set it in your .env file.")
+    
+    client = OpenAI(api_key=Config.OPENAI_API_KEY)
+    
+    # Get tool definitions
+    tools = get_tool_definitions()
+    
+    # Call LLM with tools
+    messages = [
+        {
+            "role": "system",
+            "content": "You are a financial data retrieval assistant. Use the appropriate search tool to find relevant documents based on the user's query. Choose the tool that best matches the type of information being requested."
+        },
+        {
+            "role": "user",
+            "content": query
+        }
+    ]
+    
+    logger.info("Using tool calling with model %s to route query", tool_model)
+    
+    try:
+        response = client.chat.completions.create(
+            model=tool_model,
+            messages=messages,
+            tools=tools,
+            tool_choice="auto",
+            temperature=0,
+        )
+        
+        message = response.choices[0].message
+        
+        # Check if tools were called
+        if not message.tool_calls:
+            logger.warning("No tools were called by the LLM")
+            return {
+                "category": "unknown",
+                "results": [],
+                "formatted_results": [],
+                "tool_calls": [],
+                "error": "LLM did not call any tools"
+            }
+        
+        # Execute the first tool call (we expect only one for namespace routing)
+        tool_call = message.tool_calls[0]
+        tool_name = tool_call.function.name
+        tool_args = json.loads(tool_call.function.arguments)
+        
+        # Add top_k to tool args
+        tool_args["top_k"] = top_k
+        
+        logger.info("LLM chose tool: %s with args: %s", tool_name, tool_args)
+        
+        # Execute the tool
+        tool_result = execute_tool(tool_name, tool_args)
+        result_data = json.loads(tool_result)
+        
+        # Determine category from tool name
+        category_map = {
+            "search_financial_statements_tool": "financial_statements",
+            "search_corporate_disclosures_tool": "corporate_disclosure",
+            "search_director_dealings_tool": "director_dealing",
+        }
+        category = category_map.get(tool_name, result_data.get("category", "unknown"))
+        
+        # Format results based on category
+        formatter_map = {
+            "financial_statements": format_financial_match,
+            "corporate_disclosure": format_corporate_match,
+            "director_dealing": format_director_match,
+        }
+        
+        formatter = formatter_map.get(category)
+        formatted_results = []
+        if formatter and result_data.get("results"):
+            formatted_results = [formatter(match) for match in result_data["results"]]
+        
+        return {
+            "category": category,
+            "results": result_data.get("results", []),
+            "formatted_results": formatted_results,
+            "tool_calls": [{
+                "tool": tool_name,
+                "arguments": tool_args,
+            }],
+            "num_results": result_data.get("num_results", 0),
+        }
+        
+    except Exception as e:
+        logger.error("Tool calling failed: %s", e, exc_info=True)
+        return {
+            "category": "unknown",
+            "results": [],
+            "formatted_results": [],
+            "tool_calls": [],
+            "error": str(e)
+        }
+
+
+def search_and_generate_with_tools(
+    query: str,
+    top_k: int = 10,
+    rerank_top_n: Optional[int] = None,
+    tool_model: str = "gpt-4o-mini",
+    rerank_model: str = "rerank-english-v3.0",
+    chat_model: str = "command-a-03-2025",
+    chat_history: Optional[List[Dict[str, str]]] = None,
+    enable_rerank: bool = True,
+) -> Dict[str, Any]:
+    """
+    Complete RAG pipeline using tool calling: search with tools, rerank, and generate.
+    
+    This is the tool-based alternative to search_and_generate(). Instead of classification,
+    the LLM uses tool calling to decide which namespace to search.
+    
+    Args:
+        query: Natural language search query
+        top_k: Number of results to retrieve initially
+        rerank_top_n: Number of top documents after reranking (None = use top_k)
+        tool_model: LLM model for tool calling (default: gpt-4o-mini)
+        rerank_model: Cohere rerank model (default: rerank-english-v3.0)
+        chat_model: Cohere chat model for response generation (default: command-a-03-2025)
+        chat_history: Optional list of previous messages for context
+        enable_rerank: Whether to rerank results using Cohere (default: True)
+    
+    Returns:
+        Dictionary with:
+        - category: Document category
+        - results: Reranked search results
+        - formatted_results: Formatted result strings
+        - response_stream: Generator for streaming response
+        - tool_calls: Information about which tools were called
+    """
+    # Search using tools
+    search_result = search_with_tools(
+        query=query,
+        top_k=top_k,
+        tool_model=tool_model,
+    )
+    
+    # Check for errors
+    if "error" in search_result:
+        logger.error("Search with tools failed: %s", search_result["error"])
+        # Return empty response
+        def error_stream():
+            yield f"Error: {search_result['error']}"
+        
+        return {
+            "category": search_result["category"],
+            "results": [],
+            "formatted_results": [],
+            "response_stream": error_stream(),
+            "tool_calls": search_result.get("tool_calls", []),
+        }
+    
+    # Rerank if enabled and we have results
+    results = search_result["results"]
+    if enable_rerank and results and Config.COHERE_API_KEY:
+        logger.info("Reranking enabled: will rerank %d documents to top %s", len(results), rerank_top_n or "all")
+        results = _rerank_documents(query, results, top_n=rerank_top_n, model=rerank_model)
+        logger.info("After reranking: %d documents returned", len(results))
+        
+        # Update formatted results after reranking
+        formatter_map = {
+            "financial_statements": format_financial_match,
+            "corporate_disclosure": format_corporate_match,
+            "director_dealing": format_director_match,
+        }
+        formatter = formatter_map.get(search_result["category"])
+        if formatter:
+            search_result["formatted_results"] = [formatter(match) for match in results]
+    
+    # Generate streaming response
+    response_stream = _generate_streaming_response(
+        query=query,
+        documents=results,
+        category=search_result["category"],
+        model=chat_model,
+        chat_history=chat_history,
+    )
+    
+    return {
+        "category": search_result["category"],
+        "results": results,
+        "formatted_results": search_result["formatted_results"],
+        "response_stream": response_stream,
+        "tool_calls": search_result.get("tool_calls", []),
+    }
+
+
 if __name__ == "__main__":
     print("=" * 70)
     print("Financial RAG: Search → Rerank → Generate")
